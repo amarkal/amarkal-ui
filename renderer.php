@@ -48,7 +48,7 @@ class Renderer
         {
             $this->registered_components[$type] = $class_name;
         }
-        else throw new \RuntimeException("A component with a name of '$type' has already been registered.");
+        else throw new \RuntimeException("A component of type '$type' has already been registered.");
     }
     
     /**
@@ -88,7 +88,7 @@ class Renderer
             }
             else 
             {
-                throw new \RuntimeException("The component '$type' does not exist.");
+                throw new \RuntimeException("A component of type '$type' does not exist.");
             }
         }
         
@@ -109,6 +109,6 @@ class Renderer
             return new $class_name($props);
         }
         
-        throw new \RuntimeException("The component '$type' has not been registered.");
+        throw new \RuntimeException("A component of type '$type' has not been registered.");
     }
 }
