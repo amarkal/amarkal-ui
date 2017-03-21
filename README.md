@@ -5,7 +5,13 @@ A set of HTML UI components for WordPress.
 **Dependencies:** none
 
 ## overview
+
 **amarkal-ui** is a set of HTML UI components that can be used for building anything from user contact forms to admin options pages.
+
+### Available Components
+
+* [text](https://github.com/askupasoftware/amarkal-ui/tree/master/components/text)
+* [select](https://github.com/askupasoftware/amarkal-ui/tree/master/components/select)
 
 ## Installation
 
