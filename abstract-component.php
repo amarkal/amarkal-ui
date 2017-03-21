@@ -30,6 +30,8 @@ abstract class AbstractComponent
         }
         
         $this->model = array_merge( $this->default_model(), $model );
+        
+        $this->on_created();
     }
     
     /**
@@ -102,6 +104,16 @@ abstract class AbstractComponent
     }
     
     /**
+     * Get the current component model data.
+     * 
+     * @return array
+     */
+    public function get_model()
+    {
+        return $this->model;
+    }
+    
+    /**
      * The list of required model parameters.
      * This method should be overriden by child class to specify required model
      * parameters.
@@ -112,6 +124,11 @@ abstract class AbstractComponent
     {
         return array();
     }
+    
+    /**
+     * A hook that is called once the component has been created.
+     */
+    protected function on_created() {}
     
     /**
      * Get the full path to the template file.
