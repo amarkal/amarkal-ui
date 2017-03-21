@@ -1,0 +1,11 @@
+<div class="amarkal-ui-component amarkal-ui-component-select">
+    <select name="<?php echo $this->name; ?>"
+            id="<?php echo $this->name; ?>"
+            <?php echo ($this->required ? 'aria-required="true"' : ''); ?>
+            <?php echo ($this->readonly ? 'readonly' : ''); ?>
+            <?php echo ($this->disabled ? 'disabled' : ''); ?>>
+        <?php foreach($this->data as $key => $value): ?>
+            <option <?php echo ($this->value == $value ? 'selected' : ''); ?>><?php echo $value ?></option>
+        <?php endforeach ?>
+    </select>
+</div>
