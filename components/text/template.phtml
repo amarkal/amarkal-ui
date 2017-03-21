@@ -5,5 +5,8 @@
         name="<?php echo $this->name; ?>"
         value="<?php echo $this->value; ?>"
         placeholder="<?php echo $this->placeholder; ?>"
+        size="<?php echo $this->size; ?>"
+        <?php echo ($this->required ? 'aria-required="true"' : ''); ?>
+        <?php echo ($this->readonly ? 'disabled' : ''); ?>
         <?php echo ($this->disabled ? 'disabled' : ''); ?>/>
 </div>
