@@ -19,10 +19,14 @@ if( defined( 'AMARKAL_UI' ) ) return;
 define( 'AMARKAL_UI', true );
 
 /**
- * Load required classes
+ * Load required classes if not using composer
  */
-require_once 'renderer.php';
-require_once 'abstract-component.php';
+if( !class_exists('Composer\\Autoload\\ClassLoader') )
+{
+    require_once 'renderer.php';
+    require_once 'abstract-controller.php';
+    require_once 'abstract-component.php';
+}
 
 if(!function_exists('amarkal_ui_render'))
 {
