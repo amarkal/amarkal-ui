@@ -20,12 +20,12 @@ extends AbstractComponent
         );
     }
     
-    public function required_parameters()
+    public function required_arguments()
     {
         return array('name');
     }
     
-    public function get_script_path() 
+    public function get_template_path() 
     {
         return __DIR__.'/template.phtml';
     }
