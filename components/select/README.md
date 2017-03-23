@@ -15,8 +15,8 @@ Name | Type | Default | Required | Description
 ## Example Usage
 
 ```php
-amarkal_ui_render('text', array(
-    'name'       => 'my-textfield',
+amarkal_ui_render('select', array(
+    'name'       => 'my-select',
     'data'       => array(
         'key1'   => 'Value 1',
         'key2'   => 'Value 2',
