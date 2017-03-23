@@ -1,0 +1,14 @@
+<div class="amarkal-ui-component amarkal-ui-component-number">
+    <input 
+        type="number"
+        id="<?php echo $this->id; ?>"
+        name="<?php echo $this->name; ?>"
+        value="<?php echo $this->value; ?>"
+        size="<?php echo $this->size; ?>"
+        min="<?php echo $this->min; ?>"
+        max="<?php echo $this->max; ?>"
+        step="<?php echo $this->step; ?>"
+        <?php echo ($this->required ? 'aria-required="true"' : ''); ?>
+        <?php echo ($this->readonly ? 'readonly' : ''); ?>
+        <?php echo ($this->disabled ? 'disabled' : ''); ?>/>
+</div>
