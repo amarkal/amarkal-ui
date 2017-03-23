@@ -6,7 +6,8 @@ The `select` element is used to create a drop-down list.
 
 Name | Type | Default | Required | Description
 ---|---|---|:---:|---
-`name`|*string*|`''`|Yes|Specifies the component's name/id.
+`name`|*string*|`''`|Yes|Specifies the component's name.
+`id`|*string*|`''`|No|Specifies the component's id. Same as the component's name if none was specified.
 `data`|*array*|`null`|Yes|Specifies the list of options in the drop down menu.
 `disabled`|*boolean*|`false`|No|Disables the input control. The button won't accept changes from the user. It also cannot receive focus and will be skipped when tabbing.
 `required`|*boolean*|`false`|No|Specifies that an input field must be filled out before submitting the form

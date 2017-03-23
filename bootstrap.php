@@ -23,9 +23,9 @@ define( 'AMARKAL_UI', true );
  */
 if( !class_exists('Composer\\Autoload\\ClassLoader') )
 {
-    require_once 'renderer.php';
-    require_once 'abstract-controller.php';
-    require_once 'abstract-component.php';
+    require_once 'Renderer.php';
+    require_once 'AbstractController.php';
+    require_once 'AbstractComponent.php';
 }
 
 if(!function_exists('amarkal_ui_render'))

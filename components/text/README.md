@@ -6,7 +6,8 @@ The `text` field accepts any form of text.
 
 Name | Type | Default | Required | Description
 ---|---|---|:---:|---
-`name`|*string*|`''`|Yes|Specifies the component's name/id.
+`name`|*string*|`''`|Yes|Specifies the component's name.
+`id`|*string*|`''`|No|Specifies the component's id. Same as the component's name if none was specified.
 `disabled`|*boolean*|`false`|No|Disables the input control. The button won't accept changes from the user. It also cannot receive focus and will be skipped when tabbing.
 `placeholder`|*string*|`null`|No|Text to display in the input when no value is present.
 `size`|*number*|`null`|No|Specifies the width of the control in characters.
