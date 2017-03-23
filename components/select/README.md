@@ -1,4 +1,4 @@
-# select Component
+# Select Component
 
 The `select` element is used to create a drop-down list.
 
