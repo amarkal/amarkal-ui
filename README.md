@@ -11,6 +11,7 @@ A set of HTML UI components for WordPress.
 ### Available Components
 
 * [text](https://github.com/askupasoftware/amarkal-ui/tree/master/components/text)
+* [number](https://github.com/askupasoftware/amarkal-ui/tree/master/components/number)
 * [select](https://github.com/askupasoftware/amarkal-ui/tree/master/components/select)
 
 ## Installation
@@ -33,21 +34,22 @@ And run the command
 $ composer install
 ```
 
-This will install the package in the directory `vendors/askupa-software/amarkal-ui`.
+This will install the package in the directory `vendors/askupa-software/amarkal-ui`.  
+Now all you need to do is include the composer autoloader.
+
+```php
+require_once 'path/to/vendor/autoload.php';
+```
 
 ### Manually
 
 [Download the package](https://github.com/askupasoftware/amarkal-ui/archive/master.zip) from github and include `bootstrap.php` in your project.
 
-## Usage
-
-Before you can use **amarkal-ui** in your project, you will need to bootstrap it:
-
 ```php
 require_once 'path/to/amarkal-ui/bootstrap.php';
 ```
 
-Now that **amarkal-ui** is bootstrapped, the following functions become available for you to use:
+## Reference
 
 ### amarkal_ui_render
 *Render a UI component.*
