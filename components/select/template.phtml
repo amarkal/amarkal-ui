@@ -4,8 +4,8 @@
             <?php echo ($this->required ? 'aria-required="true"' : ''); ?>
             <?php echo ($this->readonly ? 'readonly' : ''); ?>
             <?php echo ($this->disabled ? 'disabled' : ''); ?>>
-        <?php foreach($this->data as $key => $value): ?>
-            <option <?php echo ($this->value == $value ? 'selected' : ''); ?>><?php echo $value ?></option>
+        <?php foreach($this->data as $value => $label): ?>
+            <option value="<?php echo $value ?>" <?php echo ($this->value == $value ? 'selected' : ''); ?>><?php echo $label ?></option>
         <?php endforeach ?>
     </select>
 </div>
