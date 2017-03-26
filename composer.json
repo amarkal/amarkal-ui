@@ -22,6 +22,6 @@
         "psr-4": {
             "Amarkal\\UI\\": ""
         },
-        "files": ["bootstrap.php"]
+        "files": ["composer.php"]
     }
 }
