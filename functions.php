@@ -32,8 +32,8 @@ if(!function_exists('amarkal_ui_render'))
      */
     function amarkal_ui_render( $type, array $props = array() )
     {
-        $renderer = Amarkal\UI\Renderer::get_instance();
-        return $renderer->render_component( $type, $props );
+        $component = Amarkal\UI\ComponentFactory::create( $type, $props );
+        return $component->render();
     }
 }
 
@@ -49,7 +49,6 @@ if(!function_exists('amarkal_ui_register_component'))
      */
     function amarkal_ui_register_component( $type, $class_name )
     {
-        $renderer = Amarkal\UI\Renderer::get_instance();
-        $renderer->register_component( $type, $class_name );
+        Amarkal\UI\ComponentFactory::register( $type, $class_name );
     }
 }
