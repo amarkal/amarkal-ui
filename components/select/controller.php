@@ -7,6 +7,7 @@ namespace Amarkal\UI;
  */
 class Component_select
 extends AbstractComponent
+implements ValueComponentInterface
 {
     public function default_model() 
     {

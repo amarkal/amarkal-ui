@@ -7,6 +7,10 @@ namespace Amarkal\UI;
  */
 class Component_text
 extends AbstractComponent
+implements ValueComponentInterface, 
+           DisableableComponentInterface,
+           FilterableComponentInterface,
+           ValidatableComponentInterface
 {
     public function default_model() 
     {
@@ -16,7 +20,10 @@ extends AbstractComponent
             'placeholder'   => null,
             'size'          => null,
             'required'      => false,
-            'readonly'      => false
+            'readonly'      => false,
+            'default'       => null,
+            'filter'        => null,
+            'validation'    => null
         );
     }
     
