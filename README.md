@@ -15,6 +15,7 @@ A set of HTML UI components for WordPress.
 * [number](https://github.com/askupasoftware/amarkal-ui/tree/master/components/number)
 * [select](https://github.com/askupasoftware/amarkal-ui/tree/master/components/select)
 * [radio](https://github.com/askupasoftware/amarkal-ui/tree/master/components/radio)
+* [checkbox](https://github.com/askupasoftware/amarkal-ui/tree/master/components/checkbox)
 
 ## Installation
 
