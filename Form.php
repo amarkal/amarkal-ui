@@ -27,7 +27,7 @@ class Form
     private $old_instance;
     
     /**
-     * The new component values array (retrieved from the POST request).
+     * The new component values array.
      * Structure: component_name => component_value
      * 
      * @var array New values array.
@@ -37,14 +37,15 @@ class Form
     /**
      * The final values array, after filtering and validation.
      * This is returned by the update function.
+     * Structure: component_name => component_value
      * 
      * @var array Final values array. 
      */
     private $final_instance = array();
     
     /**
-     * Array of names of components that were invalid,
-     * and the error message recieved.
+     * Array of names of components that were invalid, and the error message 
+     * recieved.
      * Structure: component_name => error_message
      * 
      * @var string[] Array of error messages. 
@@ -52,14 +53,9 @@ class Form
     private $errors = array();
     
     /**
-     * When instantiating a form, a list of component argument arrays must be provided.
-     * Each argument array must have the following arguments, in addition to the
-     * component's original arguments:
-     * 
-     * type (string) - the component's type
-     * default (mix) - the component's default value
-     * filter (callable) - (optional) the component's value filter callback
-     * validation (callable) - (optional) the component's value validation callback
+     * When instantiating a form, a list of component arguments arrays must be 
+     * provided. Each arguments array must have a 'type' argument, in addition 
+     * to the component's original arguments.
      * 
      * @param array $components An array of arrays of component arguments
      */
@@ -114,28 +110,16 @@ class Form
     /**
      * Reset all fields to their default values.
      * 
-     * @param array $names List of component names to be set to their defaults. If no names are specified, all components will be reset
      * @return array The updated values array.
      */
-    public function reset( array $names = array() )
+    public function reset()
     {
-        if( array() === $names )
+        foreach( $this->components as $c )
         {
-            // Unset new instance to force reset
-            $this->new_instance = array();
-            return $this->update();
+            $c->value = $c->default;
+            $this->final_instance[$c->name] = $c->default;
         }
-        else
-        {
-            foreach( $this->components as $c )
-            {
-                if( in_array($c->name, $names) )
-                {
-                    $this->new_instance[$c->name] = $c->default;
-                }
-            }
-            return $this->update();
-        }
+        return $this->final_instance;
     }
     
     /**
@@ -161,37 +145,50 @@ class Form
         $component->value = $this->final_instance[$component->name];
         
         // Skip if this field is disabled
-        if($component instanceof DisableableComponentInterface &&
-           true === $component->disabled) {
+        if( $this->is_disabled($component) )
+        {
             return;
         }
         
         // Apply user-defined filter
-        if( $component instanceof FilterableComponentInterface )
-        {
-            $this->filter( $component );
-        }
+        $this->filter( $component );
         
         // Validate value
-        if( $component instanceof ValidatableComponentInterface )
-        {
-            $this->validate( $component );
-        }
+        $this->validate( $component );
+    }
+    
+    /**
+     * Check if the given component is disabled.
+     * 
+     * @param UI\AbstractComponent $component
+     * @return boolean
+     */
+    private function is_disabled( $component )
+    {
+        return 
+            $component instanceof DisableableComponentInterface &&
+            (
+                true === $component->disabled ||
+                true === $component->readonly
+            );
     }
     
     /**
      * Filter the component's value using its filter function (if applicable)
      * 
-     * @param UI\FilterableComponentInterface $component
+     * @param UI\AbstractComponent $component
      */
-    private function filter( FilterableComponentInterface $component )
+    private function filter( $component )
     {
-        $filter = $component->filter;
-        
-        if( is_callable( $filter ) ) 
+        if( $component instanceof FilterableComponentInterface )
         {
-            $component->value = $filter( $this->final_instance[$component->name] );
-            $this->final_instance[$component->name] = $component->value;
+            $filter = $component->filter;
+
+            if( is_callable( $filter ) ) 
+            {
+                $component->value = $filter( $this->final_instance[$component->name] );
+                $this->final_instance[$component->name] = $component->value;
+            }
         }
     }
     
@@ -201,10 +198,12 @@ class Form
      * If the value is invalid, the old value is used, and an error message is
      * saved into the errors array as component_name => error_message.
      * 
-     * @param ValidatableComponentInterface $component The component to validate.
+     * @param UI\AbstractComponent $component The component to validate.
      */
-    private function validate( ValidatableComponentInterface $component )
+    private function validate( $component )
     {
+        if( !($component instanceof ValidatableComponentInterface) ) return;
+        
         $name     = $component->name;
         $validate = $component->validation;
         $valid    = true;
@@ -226,6 +225,11 @@ class Form
         }
     }
     
+    /**
+     * Get the default values for all form components as an array of name => default_value
+     * 
+     * @return array
+     */
     private function get_defaults()
     {
         $defaults = array();
