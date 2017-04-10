@@ -11,6 +11,7 @@ Name | Type | Default | Required | Description
 `required`|*boolean*|`false`|No|Specifies that an input field must be filled out before submitting the form
 `readonly`|*boolean*|`false`|No|Sets the input control to read-only. It won't allow the user to change the value. The control however, can receive focus and are included when tabbing through the form controls.
 `data`|*array*|`null`|Yes|Specifies the list of radio buttons as `'value' => 'Label'`.
+`default`|*string*|`null`|No|Specifies the default value for this component to be used initially before any data is stored in the database. Only applicable if used in conjunction with Amarkal\UI\Form.
 
 ## Example Usage
 
@@ -22,6 +23,7 @@ amarkal_ui_render('radio', array(
         'key1'   => 'Value 1',
         'key2'   => 'Value 2',
         'key3'   => 'Value 3'
-    )
+    ),
+    'default'  => 'key1'
 ));
 ```

@@ -7,15 +7,22 @@ namespace Amarkal\UI;
  */
 class Component_textarea
 extends AbstractComponent
-implements ValueComponentInterface
+implements ValueComponentInterface, 
+           DisableableComponentInterface,
+           FilterableComponentInterface,
+           ValidatableComponentInterface
 {
     public function default_model() 
     {
         return array(
             'name'          => '',
+            'id'            => null,
             'disabled'      => false,
             'required'      => false,
-            'readonly'      => false
+            'readonly'      => false,
+            'default'       => null,
+            'filter'        => null,
+            'validation'    => null
         );
     }
     

@@ -2,7 +2,11 @@
 
 namespace Amarkal\UI;
 
-abstract class AbstractController
+/**
+ * Templates are a combination of markup and logic. Use templates to maintain
+ * separation of concepts.
+ */
+class Template
 {
     /**
      * An associative array holding the model to be used by this controller
@@ -11,13 +15,20 @@ abstract class AbstractController
     protected $model;
     
     /**
+     * @var string The path to the template file
+     */
+    protected $template;
+
+    /**
      * Constructor
      * 
      * @param array $model
+     * @param string $template_path
      */
-    public function __construct( array $model = array() ) 
+    public function __construct( array $model = array(), $template_path = null ) 
     {
         $this->set_model( $model );
+        $this->template = $template_path;
     }
     
     /**
@@ -73,7 +84,10 @@ abstract class AbstractController
      * 
      * @return string The full path.
      */
-    abstract function get_template_path();
+    public function get_template_path()
+    {
+        return $this->template;
+    }
     
     /**
      * Render the template with the local properties.
@@ -81,8 +95,8 @@ abstract class AbstractController
      * @return string The rendered template.
      * @throws TemplateNotFoundException Thrown if the template file cannot be found.
      */
-    public function render( $echo = false ){
-        
+    public function render( $echo = false )
+    {
         $rendered_html = '';
         
         if( file_exists( $this->get_template_path() ) ) 

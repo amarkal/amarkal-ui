@@ -6,7 +6,7 @@ namespace Amarkal\UI;
  * Defines an abstract UI component
  */
 abstract class AbstractComponent
-extends AbstractController
+extends Template
 {
     /**
      * Constructor

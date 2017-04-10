@@ -1,12 +1,14 @@
 <div class="amarkal-ui-component amarkal-ui-component-radio">
     <?php foreach($this->data as $value => $label): ?>
-        <input type="radio" 
-               name="<?php echo $this->name; ?>" 
-               value="<?php echo $value ?>"
-               <?php echo ($this->required ? 'aria-required="true"' : ''); ?>
-               <?php echo ($this->readonly ? 'readonly' : ''); ?>
-               <?php echo ($this->disabled ? 'disabled' : ''); ?>
-               <?php echo ($this->value == $value ? 'checked' : ''); ?>/>
+        <label>
+            <input type="radio" 
+                   name="<?php echo $this->name; ?>" 
+                   value="<?php echo $value ?>"
+                   <?php echo ($this->required ? 'aria-required="true"' : ''); ?>
+                   <?php echo ($this->readonly ? 'readonly' : ''); ?>
+                   <?php echo ($this->disabled ? 'disabled' : ''); ?>
+                   <?php echo ($this->value == $value ? 'checked' : ''); ?>/>
             <?php echo $label ?><br>
+        </label>
     <?php endforeach ?>
 </div>

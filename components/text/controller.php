@@ -16,6 +16,7 @@ implements ValueComponentInterface,
     {
         return array(
             'name'          => '',
+            'id'            => '',
             'disabled'      => false,
             'placeholder'   => null,
             'size'          => null,

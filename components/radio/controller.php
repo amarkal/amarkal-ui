@@ -7,16 +7,19 @@ namespace Amarkal\UI;
  */
 class Component_radio
 extends AbstractComponent
-implements ValueComponentInterface
+implements ValueComponentInterface, 
+           DisableableComponentInterface
 {
     public function default_model() 
     {
         return array(
             'name'          => '',
+            'id'            => '',
             'disabled'      => false,
             'required'      => false,
             'readonly'      => false,
-            'data'          => array()
+            'data'          => array(),
+            'default'       => null
         );
     }
     

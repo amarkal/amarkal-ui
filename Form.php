@@ -134,6 +134,27 @@ class Form
     }
     
     /**
+     * Get a component by its name.
+     * 
+     * @param string $name
+     * @return UI\AbstractComponent
+     */
+    public function get_component( $name )
+    {
+        return $this->components[$name];
+    }
+    
+    /**
+     * Get all components.
+     * 
+     * @return array
+     */
+    public function get_components()
+    {
+        return $this->components;
+    }
+    
+    /**
      * Update the component's value with the new value.
      * NOTE: this function also updates the $final_instance
      * array.
@@ -186,7 +207,7 @@ class Form
 
             if( is_callable( $filter ) ) 
             {
-                $component->value = $filter( $this->final_instance[$component->name] );
+                $component->value = \call_user_func_array($filter, array($this->final_instance[$component->name]));
                 $this->final_instance[$component->name] = $component->value;
             }
         }
@@ -206,18 +227,18 @@ class Form
         
         $name     = $component->name;
         $validate = $component->validation;
-        $valid    = true;
         
         $component->validity = $component::VALID;
         
         if(is_callable($validate))
         {
-            $valid = $validate($this->new_instance[$name]);
+            $error = '';
+            $valid = \call_user_func_array($validate, array($this->final_instance[$name], &$error));
             
             // Invalid input, use old instance or default value
             if ( true !== $valid ) 
             {
-                $this->errors[$name]         = $valid;
+                $this->errors[$name]         = $error;
                 $component->value            = $this->old_instance[$name];
                 $component->validity         = $component::INVALID;
                 $this->final_instance[$name] = $this->old_instance[$name];

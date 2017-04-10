@@ -7,19 +7,49 @@ namespace Amarkal\UI;
  */
 class Component_number
 extends AbstractComponent
+implements ValueComponentInterface, 
+           DisableableComponentInterface,
+           FilterableComponentInterface,
+           ValidatableComponentInterface
 {
     public function default_model() 
     {
         return array(
             'name'          => '',
+            'id'            => '',
             'disabled'      => false,
             'size'          => null,
             'min'           => null,
             'max'           => null,
             'step'          => null,
             'required'      => false,
-            'readonly'      => false
+            'readonly'      => false,
+            'default'       => null,
+            'filter'        => array( $this, 'filter' ),
+            'validation'    => array( $this, 'validation' )
         );
+    }
+    
+    public function filter($v)
+    {
+        return floatval($v);
+    }
+    
+    public function validation($v,&$e)
+    {
+        if(null !== $this->max && $v > $this->max) 
+        {
+            $e = "must be less than {$this->max}";
+            return false;
+        }
+
+        if(null !== $this->min && $v < $this->min) 
+        {
+            $e = "must be greater than {$this->min}";
+            return false;
+        }
+
+        return true;
     }
     
     public function required_arguments()

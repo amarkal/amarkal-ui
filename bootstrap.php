@@ -16,6 +16,6 @@ if(false !== (require_once 'functions.php'))
 {
     // Load required classes if not using composer
     require_once 'Renderer.php';
-    require_once 'AbstractController.php';
+    require_once 'Template.php';
     require_once 'AbstractComponent.php';
 }

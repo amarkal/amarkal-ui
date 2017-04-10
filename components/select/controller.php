@@ -7,16 +7,19 @@ namespace Amarkal\UI;
  */
 class Component_select
 extends AbstractComponent
-implements ValueComponentInterface
+implements ValueComponentInterface, 
+           DisableableComponentInterface
 {
     public function default_model() 
     {
         return array(
             'name'      => '',
+            'id'        => '',
             'disabled'  => false,
             'data'      => array(),
             'required'  => false,
-            'readonly'  => false
+            'readonly'  => false,
+            'default'   => null
         );
     }
     

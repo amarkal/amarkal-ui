@@ -52,6 +52,85 @@ require_once 'path/to/vendor/autoload.php';
 require_once 'path/to/amarkal-ui/bootstrap.php';
 ```
 
+## Processing Form Data
+
+You can process form data by using `Amarkal\UI\Form`. The `Form` object takes a list of UI components and loops through them to produce the final values that can then be stored into the database or further processed.
+
+### Instantiating The Form Object
+
+When instantiating a Form object, an array of UI components must be provided as an argument. These UI components can have default values, and some components can have filter and validation functions.
+
+```php
+$form = new Amarkal\UI\Form(array(
+    array(
+        'name'    => 'my-textfield',
+        'type'    => 'text',
+        'default' => 'Some text'
+    ),
+    array(
+        'name'    => 'my-textarea',
+        'type'    => 'textarea',
+        'default' => 'Some text'
+    )
+));
+```
+
+### Updating Form Values
+
+The `Form::update()` function can be use to process form submissions and produce a filtered & validated set of values that can be safely stored in the database. The `Form::update()` function takes an array of old and new values (referred to as `$old_instance` and `$new_instance`) and uses them to produce a list of final values (referred to as `$new_instance`). When calling the `Form::update()` function, the form object will loop through all the form's UI components, and will do the following in each iteration:
+
+* If the component is disabled, the default value will be used and no processing will occur.
+* If the `$new_instance` does not have a value for the given component, the value in `$old_instance` will be used.
+* If the `$new_instance` and `$old_instance` both do not have a value for the given component, the default value will be used.
+* If the `$new_instance` has a value for the given component, that value will be filtered and validated (if applicabale) before being placed in the `$final_instance`.
+
+```php
+// Example for processing a POST form submission
+$new_instance = filter_input_array(INPUT_POST);
+$old_instance = array(); // This can be the values previously stored in the database
+$final_instance = $form->update($new_instance, $old_instance);
+```
+
+### Displaying Errors
+
+During the processing of component values, if a validatable component is found to be invalid (via its validation function), an error message will be stored in the Form's `$errors` array as `'component_name' => 'error_message'`. The list of errors can be retrieved using `Form::get_errors()`. For example:
+
+```php
+// Instantiate a form object
+$form = new Amarkal\UI\Form(array(
+    array(
+        'name'       => 'my-numberfield',
+        'type'       => 'number',
+        'default'    => 0,
+        'validation' => function($v,&$e) {
+            if($v > 10) {
+               $e = 'must be less than or equal to 10';
+               return false;
+            }
+            return true;
+        }
+    )
+));
+
+// Update form with invalid values
+$new_instance = array(
+    'my-numberfield' => 20
+);
+$final_instance = $form->update($new_instance);
+$errors = $form->get_errors();
+
+var_dump($errors);
+```
+
+The above will print:
+
+```
+array(1) {
+    ["my-numberfield"]=>
+    string(32) "must be less than or equal to 10"
+}
+```
+
 ## Reference
 
 ### amarkal_ui_render
