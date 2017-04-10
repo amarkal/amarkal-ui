@@ -37,19 +37,17 @@ implements ValueComponentInterface,
     
     public function validation($v,&$e)
     {
-        if(null !== $this->max && $v > $this->max) 
+        if($v > $this->max) 
         {
             $e = "must be less than {$this->max}";
-            return false;
         }
 
-        if(null !== $this->min && $v < $this->min) 
+        if($v < $this->min) 
         {
             $e = "must be greater than {$this->min}";
-            return false;
         }
 
-        return true;
+        return $e ? false : true;
     }
     
     public function required_arguments()
