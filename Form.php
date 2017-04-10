@@ -238,7 +238,7 @@ class Form
             // Invalid input, use old instance or default value
             if ( true !== $valid ) 
             {
-                $this->errors[$name]         = $error;
+                $this->errors[$name]         = $error ? $error : ValidatableComponentInterface::DEFAULT_MESSAGE;
                 $component->value            = $this->old_instance[$name];
                 $component->validity         = $component::INVALID;
                 $this->final_instance[$name] = $this->old_instance[$name];
