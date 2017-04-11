@@ -15,7 +15,7 @@ class Form
      * 
      * @var AbstractComponent[] objects array.
      */
-    private $components;
+    private $components = array();
     
     /**
      * The old component values array. These values are used if the new values
@@ -61,15 +61,7 @@ class Form
      */
     public function __construct( array $components = array() )
     {
-        foreach( $components as $args )
-        {
-            $name = $args['name'];
-            if(array_key_exists($name, $components))
-            {
-                throw new \RuntimeException("A component with the name <b>$name</b> has already been created");
-            }
-            $this->components[$name] = ComponentFactory::create($args['type'], $args);
-        }
+        $this->add_components($components);
     }
     
     /**
@@ -89,7 +81,7 @@ class Form
      * 
      * @return array The updated values array.
      */
-    public function update( array $new_instance, array $old_instance = array() )
+    public function update( array $new_instance = array(), array $old_instance = array() )
     {
         $this->old_instance   = array_merge($this->get_defaults(),$old_instance);
         $this->new_instance   = array_merge($this->old_instance,$new_instance);
@@ -131,6 +123,35 @@ class Form
     public function get_errors()
     {
         return $this->errors;
+    }
+    
+    /**
+     * Add a component to the form.
+     * 
+     * @param array $args The component arguments
+     * @throws \RuntimeException If a component with the same name has already been registered
+     */
+    public function add_component( array $args )
+    {
+        $name = $args['name'];
+        if(array_key_exists($name, $this->components))
+        {
+            throw new \RuntimeException("A component with the name <b>$name</b> has already been created");
+        }
+        $this->components[$name] = ComponentFactory::create($args['type'], $args);
+    }
+    
+    /**
+     * Add multiple components to the form.
+     * 
+     * @param array $components
+     */
+    public function add_components( array $components )
+    {
+        foreach( $components as $component )
+        {
+            $this->add_component($component);
+        }
     }
     
     /**
