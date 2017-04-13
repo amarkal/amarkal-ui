@@ -15,7 +15,12 @@ defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 if(false !== (require_once 'functions.php'))
 {
     // Load required classes if not using composer
-    require_once 'Renderer.php';
-    require_once 'Template.php';
     require_once 'AbstractComponent.php';
+    require_once 'ComponentFactory.php';
+    require_once 'DisableableComponentInterface.php';
+    require_once 'FilterableComponentInterface.php';
+    require_once 'Form.php';
+    require_once 'Template.php';
+    require_once 'ValidatableComponentInterface.php';
+    require_once 'ValueComponentInterface.php';
 }
