@@ -10,12 +10,23 @@ A set of HTML UI components for WordPress.
 
 ### Available Components
 
-* [text](https://github.com/askupasoftware/amarkal-ui/tree/master/components/text)
-* [textarea](https://github.com/askupasoftware/amarkal-ui/tree/master/components/textarea)
-* [number](https://github.com/askupasoftware/amarkal-ui/tree/master/components/number)
-* [select](https://github.com/askupasoftware/amarkal-ui/tree/master/components/select)
-* [radio](https://github.com/askupasoftware/amarkal-ui/tree/master/components/radio)
-* [checkbox](https://github.com/askupasoftware/amarkal-ui/tree/master/components/checkbox)
+* [Text](https://github.com/askupasoftware/amarkal-ui/tree/master/components/text)
+* [Textarea](https://github.com/askupasoftware/amarkal-ui/tree/master/components/textarea)
+* [Number](https://github.com/askupasoftware/amarkal-ui/tree/master/components/number)
+* [Select](https://github.com/askupasoftware/amarkal-ui/tree/master/components/select)
+* [Radio](https://github.com/askupasoftware/amarkal-ui/tree/master/components/radio)
+* [Checkbox](https://github.com/askupasoftware/amarkal-ui/tree/master/components/checkbox)
+* Toggle (coming soon)
+* Color Picker (coming soon)
+* Attachment (coming soon)
+* Editor (coming soon)
+* Date (coming soon)
+* Code Editor (coming soon)
+* Slider (coming soon)
+* Progress Bar (coming soon)
+* Button (coming soon)
+* Composite (coming soon)
+* HTML (coming soon)
 
 ## Installation
 
