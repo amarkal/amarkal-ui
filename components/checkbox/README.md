@@ -2,6 +2,8 @@
 
 The `checkbox` field lets the user select one or more options from a set of alternatives.
 
+The value of a checkbox component is stored as an array of all the checked boxes values.
+
 ## Arguments
 
 Name | Type | Default | Required | Description
@@ -11,19 +13,53 @@ Name | Type | Default | Required | Description
 `required`|*boolean*|`false`|No|Specifies that an input field must be filled out before submitting the form
 `readonly`|*boolean*|`false`|No|Sets the input control to read-only. It won't allow the user to change the value. The control however, can receive focus and are included when tabbing through the form controls.
 `data`|*array*|`null`|Yes|Specifies the list of checkboxes as `'value' => 'Label'`.
-`default`|*array*|`null`|No|Specifies the default value for this component to be used initially before any data is stored in the database. Only applicable if used in conjunction with Amarkal\UI\Form.
 
-## Example Usage
+### Additional `UI\Form` Arguments
+
+When using `Amarkal\UI\Form` to process component data, the following arguments may be used in addition to the basic component arguments.
+
+Name | Type | Default | Required | Description
+---|---|---|:---:|---
+`default`|*array*|`null`|No|Specifies the default value for this component.
+
+## Usage
+
+No data processing (Static HTML)
 
 ```php
 amarkal_ui_render('checkbox', array(
     'name'     => 'my-checkboxes',
     'disabled' => false,
+    'required' => false,
+    'readonly' => false,
     'data'     => array(
         'key1'   => 'Value 1',
         'key2'   => 'Value 2',
         'key3'   => 'Value 3'
-    ),
-    'default'  => array('key1','key2')
+    )
 ));
+```
+
+Data processing using `UI\Form`
+
+```php
+$form = new Amarkal\UI\Form(array(
+    array(
+        'type'          => 'checkbox',
+        'name'          => 'my-checkboxes',
+        'default'       => array('key1','key2')
+    )
+));
+
+// The array of new values
+$new_values = array(
+    'my-checkboxes' => array('key3') 
+);
+
+// Update component values
+$values = $form->update($new_values);
+
+// Render the component with the new value
+$component = $form->get_component('my-checkboxes');
+$component->render(true);
 ```

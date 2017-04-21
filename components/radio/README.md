@@ -11,9 +11,18 @@ Name | Type | Default | Required | Description
 `required`|*boolean*|`false`|No|Specifies that an input field must be filled out before submitting the form
 `readonly`|*boolean*|`false`|No|Sets the input control to read-only. It won't allow the user to change the value. The control however, can receive focus and are included when tabbing through the form controls.
 `data`|*array*|`null`|Yes|Specifies the list of radio buttons as `'value' => 'Label'`.
-`default`|*string*|`null`|No|Specifies the default value for this component to be used initially before any data is stored in the database. Only applicable if used in conjunction with Amarkal\UI\Form.
 
-## Example Usage
+### Additional `UI\Form` Arguments
+
+When using `Amarkal\UI\Form` to process component data, the following arguments may be used in addition to the basic component arguments.
+
+Name | Type | Default | Required | Description
+---|---|---|:---:|---
+`default`|*array*|`null`|No|Specifies the default value for this component.
+
+## Usage
+
+No data processing (Static HTML)
 
 ```php
 amarkal_ui_render('radio', array(
@@ -23,7 +32,35 @@ amarkal_ui_render('radio', array(
         'key1'   => 'Value 1',
         'key2'   => 'Value 2',
         'key3'   => 'Value 3'
-    ),
-    'default'  => 'key1'
+    )
 ));
+```
+
+Data processing using `UI\Form`
+
+```php
+$form = new Amarkal\UI\Form(array(
+    array(
+        'type'     => 'radio',
+        'name'     => 'my-radio',
+        'data'     => array(
+            'key1'   => 'Value 1',
+            'key2'   => 'Value 2',
+            'key3'   => 'Value 3'
+        ),
+        'default'  => 'key1'
+    )
+));
+
+// The array of new values
+$new_values = array(
+    'my-radio'  => 'key2'
+);
+
+// Update component values
+$values = $form->update($new_values);
+
+// Render the component with the new value
+$component = $form->get_component('my-radio');
+$component->render(true);
 ```

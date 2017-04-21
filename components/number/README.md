@@ -15,9 +15,20 @@ Name | Type | Default | Required | Description
 `step`|*number*|`null`|No|Specifies the legal number intervals for an input field.
 `required`|*boolean*|`false`|No|Specifies that an input field must be filled out before submitting the form
 `readonly`|*boolean*|`false`|No|Sets the input control to read-only. It won't allow the user to change the value. The control however, can receive focus and are included when tabbing through the form controls.
-`default`|*string*|`null`|No|Specifies the default value for this component to be used initially before any data is stored in the database. Only applicable if used in conjunction with Amarkal\UI\Form.
 
-## Example Usage
+### Additional `UI\Form` Arguments
+
+When using `Amarkal\UI\Form` to process component data, the following arguments may be used in addition to the basic component arguments.
+
+Name | Type | Default | Required | Description
+---|---|---|:---:|---
+`default`|*array*|`null`|No|Specifies the default value for this component.
+`filter`|*function*|`null`|No|Specifies a filter function to filter the data before it is stored in the database.
+`validation`|*function*|`null`|No|Specifies a validation function to validate the data before it is stored in the database. If the data is invalid, the previous value will be used (or the default value if there was no previous data), and an error message will be given.
+
+## Usage
+
+No data processing (Static HTML)
 
 ```php
 amarkal_ui_render('number', array(
@@ -29,7 +40,30 @@ amarkal_ui_render('number', array(
     'size'            => 40,
     'min'             => 0,
     'max'             => 100,
-    'step'            => 1,
-    'default'         => 0
+    'step'            => 1
 ));
+```
+
+Data processing using `UI\Form`
+
+```php
+$form = new Amarkal\UI\Form(array(
+    array(
+        'type'          => 'number',
+        'name'          => 'my-number-field',
+        'default'       => 0
+    )
+));
+
+// The array of new values
+$new_values = array(
+    'my-number-field' => 1
+);
+
+// Update component values
+$values = $form->update($new_values);
+
+// Render the component with the new value
+$component = $form->get_component('my-number-field');
+$component->render(true);
 ```
