@@ -16,6 +16,7 @@ A set of HTML UI components for WordPress.
 * [Select](https://github.com/askupasoftware/amarkal-ui/tree/master/components/select)
 * [Radio](https://github.com/askupasoftware/amarkal-ui/tree/master/components/radio)
 * [Checkbox](https://github.com/askupasoftware/amarkal-ui/tree/master/components/checkbox)
+* [Composite](https://github.com/askupasoftware/amarkal-ui/tree/master/components/composite)
 * Toggle (coming soon)
 * Color Picker (coming soon)
 * Attachment (coming soon)
@@ -25,7 +26,6 @@ A set of HTML UI components for WordPress.
 * Slider (coming soon)
 * Progress Bar (coming soon)
 * Button (coming soon)
-* Composite (coming soon)
 * HTML (coming soon)
 
 ## Installation
