@@ -2,7 +2,7 @@
     <?php foreach($this->data as $value => $label): ?>
         <label>
             <input type="radio" 
-                   name="<?php echo $this->name; ?>" 
+                   name="<?php echo $this->get_name(); ?>" 
                    value="<?php echo $value ?>"
                    <?php echo ($this->required ? 'aria-required="true"' : ''); ?>
                    <?php echo ($this->readonly ? 'readonly' : ''); ?>

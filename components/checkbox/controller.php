@@ -10,6 +10,10 @@ extends AbstractComponent
 implements ValueComponentInterface, 
            DisableableComponentInterface
 {
+    public $name_template = '{{name}}[]';
+    
+    public $composite_name_template = '{{parent_name}}[{{name}}][]';
+    
     public function default_model() 
     {
         return array(
