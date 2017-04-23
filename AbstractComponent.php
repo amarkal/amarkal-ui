@@ -96,6 +96,15 @@ extends Template
         return \str_replace('{{name}}', $this->name, $this->name_template);
     }
     
+    public function component_attributes()
+    {
+        return sprintf(
+            'class="amarkal-ui-component amarkal-ui-component-%s" amarkal-component-name="%s"',
+            $this->component_type,
+            $this->name
+        );
+    }
+    
     /**
      * A hook that is called once the component has been created.
      */

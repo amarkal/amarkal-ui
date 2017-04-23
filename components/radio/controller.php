@@ -10,6 +10,8 @@ extends AbstractComponent
 implements ValueComponentInterface, 
            DisableableComponentInterface
 {
+    public $component_type = 'radio';
+    
     public function default_model() 
     {
         return array(

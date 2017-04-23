@@ -14,6 +14,8 @@ implements ValueComponentInterface,
     
     public $composite_name_template = '{{parent_name}}[{{name}}][]';
     
+    public $component_type = 'checkbox';
+    
     public function default_model() 
     {
         return array(

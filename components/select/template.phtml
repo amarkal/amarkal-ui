@@ -1,4 +1,4 @@
-<div class="amarkal-ui-component amarkal-ui-component-select">
+<div <?php echo $this->component_attributes(); ?>>
     <select name="<?php echo $this->get_name(); ?>"
             id="<?php echo $this->id; ?>"
             <?php echo ($this->required ? 'aria-required="true"' : ''); ?>

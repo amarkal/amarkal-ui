@@ -12,6 +12,8 @@ implements ValueComponentInterface,
            FilterableComponentInterface,
            ValidatableComponentInterface
 {
+    public $component_type = 'text';
+    
     public function default_model() 
     {
         return array(

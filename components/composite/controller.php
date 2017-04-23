@@ -19,6 +19,8 @@ implements ValueComponentInterface,
      */
     private $components;
     
+    public $component_type = 'composite';
+    
     /**
      * The __set magic method is overridden here to apply value changes to 
      * child components.

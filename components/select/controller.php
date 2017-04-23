@@ -10,8 +10,10 @@ extends AbstractComponent
 implements ValueComponentInterface, 
            DisableableComponentInterface
 {
+    public $component_type = 'select';
+    
     public function default_model() 
-    {
+    {   
         return array(
             'name'      => '',
             'id'        => '',

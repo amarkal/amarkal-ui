@@ -1,7 +1,7 @@
-<div class="amarkal-ui-component amarkal-ui-component-checkbox">
+<div <?php echo $this->component_attributes(); ?>>
     <?php foreach($this->data as $value => $label): ?>
         <label>
-            <input type="checkbox" 
+            <input type="checkbox"
                    name="<?php echo $this->get_name(); ?>" 
                    value="<?php echo $value ?>"
                    <?php echo ($this->required ? 'aria-required="true"' : ''); ?>
