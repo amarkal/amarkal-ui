@@ -50,6 +50,12 @@ class ComponentFactory
         else throw new \RuntimeException("A component of type '$type' has already been registered.");
     }
     
+    public static function get_url( $path )
+    {
+        $url  = str_replace( ABSPATH, '', $path );
+        return esc_url_raw( site_url( $url ) );
+    }
+    
     /**
      * 
      * @param type $type

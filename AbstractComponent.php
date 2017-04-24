@@ -105,6 +105,18 @@ extends Template
         );
     }
     
+    public function render( $echo = false )
+    {
+        $this->enqueue_scripts();
+        return parent::render($echo);
+    }
+    
+    public function enqueue_scripts()
+    {
+        \wp_enqueue_script('amarkal-ui');
+        \wp_enqueue_style('amarkal-ui');
+    }
+    
     /**
      * A hook that is called once the component has been created.
      */
