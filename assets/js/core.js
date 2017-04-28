@@ -1,6 +1,10 @@
+var Amarkal;
 if(typeof global.Amarkal === "undefined") {
-    var Amarkal = {};
+    Amarkal = {};
     global.Amarkal = Amarkal;
+}
+else {
+    Amarkal = global.Amarkal;
 }
 
 Amarkal.UI = {
@@ -64,6 +68,9 @@ Amarkal.UI = {
 $.fn.extend({
     // NOTE: this function does not return a jQuery object!
     amarkalUIcomponent: function() {
+        if(!this.hasClass('.amarkal-ui-component')) {
+            throw "This element is not an Amarkal UI component";
+        }
         // If this is the initial call for this component, instantiate a new 
         // component object
         if( typeof this.data('amarkal-ui-component') === 'undefined' ) {
