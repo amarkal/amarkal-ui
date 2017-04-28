@@ -56,7 +56,8 @@ if(!function_exists('amarkal_ui_register_component'))
 if(!function_exists('amarkal_ui_register_scripts'))
 {
     /**
-     * Register Amarkal UI styles & scripts
+     * Register Amarkal UI styles & scripts. These scripts are later enqueued by
+     * UI components where applicable.
      */
     function amarkal_ui_register_scripts()
     {

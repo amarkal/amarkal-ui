@@ -96,6 +96,9 @@ extends Template
         return \str_replace('{{name}}', $this->name, $this->name_template);
     }
     
+    /**
+     * Generate common UI component wrapper attributes
+     */
     public function component_attributes()
     {
         return sprintf(
@@ -105,12 +108,20 @@ extends Template
         );
     }
     
+    /**
+     * Enqueue component's script and render it.
+     * 
+     * {@inheritdoc}
+     */
     public function render( $echo = false )
     {
         $this->enqueue_scripts();
         return parent::render($echo);
     }
     
+    /**
+     * Enqueue styles/scripts required for this element.
+     */
     public function enqueue_scripts()
     {
         \wp_enqueue_script('amarkal-ui');
