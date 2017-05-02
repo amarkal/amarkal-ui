@@ -4,5 +4,11 @@ Amarkal.UI.registerComponent('number',{
     },
     getValue: function() {
         return this.$el.find('input').val();
+    },
+    onInit: function() {
+        var _this = this;
+        this.$el.find('input').on('change',function(){
+            _this.onChange();
+        });
     }
 });

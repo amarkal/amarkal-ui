@@ -48,11 +48,14 @@ Amarkal.UI = {
      * @param {jQuery} $el
      * @returns {Object}
      */
-    component: function($el) {
+    createComponent: function($el) {
+        
         var type   = $el.attr('class').match(/amarkal-ui-component-([a-z]+)/)[1],
             config = Amarkal.UI.getComponentConfig(type),
-            comp   = $.extend({}, config, {$el:$el});
+            comp   = $.extend({}, Amarkal.UI.abstractComponent, config);
     
+        comp.$el = $el;
+        
         // If the property is a function, bind the functions 'this' keyword to 
         // the component object
         for(var key in comp) {
@@ -60,22 +63,21 @@ Amarkal.UI = {
                 comp[key] = comp[key].bind(comp);
             }
         }
-
+        
+        // Call component initiation function
+        comp.onInit();
+        
         return comp;
+    },
+    
+    /**
+     * Initiate all UI components
+     */
+    init: function() {
+        $('.amarkal-ui-component').amarkalUIcomponent();
     }
 };
 
-$.fn.extend({
-    // NOTE: this function does not return a jQuery object!
-    amarkalUIcomponent: function() {
-        if(!this.hasClass('.amarkal-ui-component')) {
-            throw "This element is not an Amarkal UI component";
-        }
-        // If this is the initial call for this component, instantiate a new 
-        // component object
-        if( typeof this.data('amarkal-ui-component') === 'undefined' ) {
-            this.data('amarkal-ui-component', Amarkal.UI.component(this));
-        }
-        return this.data('amarkal-ui-component');
-    }
+$(document).ready(function(){
+    Amarkal.UI.init();
 });

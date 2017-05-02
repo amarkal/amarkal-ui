@@ -12,5 +12,11 @@ Amarkal.UI.registerComponent('checkbox',{
             .find('input[checked]')
             .toArray()
             .map(function(el){return el.value;});
+    },
+    onInit: function() {
+        var _this = this;
+        this.$el.find('input').on('change',function(){
+            _this.onChange();
+        });
     }
 });

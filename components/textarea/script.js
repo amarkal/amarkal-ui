@@ -4,5 +4,11 @@ Amarkal.UI.registerComponent('textarea',{
     },
     getValue: function() {
         return this.$el.find('textarea').val();
+    },
+    onInit: function() {
+        var _this = this;
+        this.$el.find('textarea').on('keyup',function(){
+            _this.onChange();
+        });
     }
 });
