@@ -17,7 +17,7 @@ module.exports = function(grunt) {
                 spawn: false // Makes watch run A LOT faster, and also lets you pass variables to the grunt tasks being called
             },
             js: {
-                files: ['<%= dirs.js %>/*.js','components/**/*.js'],
+                files: ['<%= dirs.js %>/src/*.js','components/**/*.js'],
                 tasks: ['concat:js','uglify']
             },
             scss: {
@@ -29,7 +29,7 @@ module.exports = function(grunt) {
             dist: {
                 options: {
                     sassDir: '<%= dirs.scss %>',
-                    cssDir: '<%= dirs.css %>/sass_output',
+                    cssDir: '<%= dirs.css %>/src',
                     environment: 'production',
                     raw: 'preferred_syntax = :scss\n', // Use `raw` since it's not directly available
                     outputStyle: 'compressed'
@@ -41,8 +41,8 @@ module.exports = function(grunt) {
                 options: {
                     separator: ''
                 },
-                src: ['<%= dirs.css %>/sass_output/*.css'],
-                dest: '<%= dirs.css %>/amarkal-ui.min.css'
+                src: ['<%= dirs.css %>/src/*.css'],
+                dest: '<%= dirs.css %>/dist/amarkal-ui.min.css'
             },
             js: {
                 options: {
@@ -51,10 +51,12 @@ module.exports = function(grunt) {
                     separator: "\n"
                 },
                 src: [
-                    '<%= dirs.js %>/core.js',
+                    '<%= dirs.js %>/src/core.js',
+                    '<%= dirs.js %>/src/abstractComponent.js',
+                    '<%= dirs.js %>/src/jquery.amarkalUIComponent.js',
                     'components/**/*.js'
                 ],
-                dest: '<%= dirs.js %>/amarkal-ui.min.js'
+                dest: '<%= dirs.js %>/dist/amarkal-ui.min.js'
             }
         },
         copy: {
@@ -79,7 +81,7 @@ module.exports = function(grunt) {
                     banner: ''
                 },
                 files: {
-                    '<%= dirs.js %>/amarkal-ui.min.js': ['<%= dirs.js %>/amarkal-ui.min.js']
+                    '<%= dirs.js %>/dist/amarkal-ui.min.js': ['<%= dirs.js %>/dist/amarkal-ui.min.js']
                 }
             }
         }
