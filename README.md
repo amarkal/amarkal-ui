@@ -1,12 +1,12 @@
 # amarkal-ui [![Build Status](https://scrutinizer-ci.com/g/askupasoftware/amarkal-ui/badges/build.png?b=master)](https://scrutinizer-ci.com/g/askupasoftware/amarkal-ui/build-status/master) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/askupasoftware/amarkal-ui/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/askupasoftware/amarkal-ui/?branch=master) [![License](https://img.shields.io/badge/license-GPL--3.0%2B-red.svg)](https://raw.githubusercontent.com/askupasoftware/amarkal-ui/master/LICENSE)
-A set of HTML UI components for WordPress.
+A set of UI components for WordPress.
 
 **Tested up to:** WordPress 4.7  
 **Dependencies:** none
 
 ## overview
 
-**amarkal-ui** is a set of HTML UI components that can be used for building anything from user contact forms to admin options pages.
+**amarkal-ui** is a set of UI components that can be used for building anything from user contact forms to admin options pages.
 
 ### Available Components
 

@@ -2,7 +2,7 @@
 /**
  * WordPress UI
  *
- * A set of HTML UI components for WordPress.
+ * A set of UI components for WordPress.
  * This is a component within the Amarkal framework.
  *
  * @package   amarkal-ui

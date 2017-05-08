@@ -1,6 +1,6 @@
 {
     "name": "askupa-software/amarkal-ui",
-    "description": "A set of HTML UI components for WordPress",
+    "description": "A set of UI components for WordPress",
     "type": "wordpress",
     "keywords": ["wordpress","admin","ui","form","user interface"],
     "homepage": "https://github.com/askupasoftware/amarkal-ui",

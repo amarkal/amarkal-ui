@@ -1,6 +1,6 @@
 {
   "name": "amarkal-ui",
-  "description": "A set of HTML UI components for WordPress",
+  "description": "A set of UI components for WordPress",
   "author": "Askupa Software",
   "main": "GruntFile.js",
   "devDependencies": {
