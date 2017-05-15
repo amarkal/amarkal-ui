@@ -1,5 +1,10 @@
 .amarkal-ui-component-text {
     
+    &.amarkal-ui-component-error input {
+        border-color: red;
+        background-color: #ffd8d8;
+    }
+    
     input {
         border-radius: 3px;
     }

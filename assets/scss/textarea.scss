@@ -1,11 +1,11 @@
-.amarkal-ui-component-text {
+.amarkal-ui-component-textarea {
     
-    &.amarkal-ui-component-error input {
+    &.amarkal-ui-component-error textarea {
         border-color: red;
         background-color: #ffd8d8;
     }
     
-    input {
+    textarea {
         border-radius: 3px;
     }
 }
