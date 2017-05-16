@@ -74,7 +74,7 @@ Amarkal.UI = {
      * Initiate all UI components
      */
     init: function() {
-        $('.amarkal-ui-component').amarkalUIcomponent();
+        $('.amarkal-ui-component').amarkalUIComponent();
     }
 };
 

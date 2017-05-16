@@ -1,6 +1,6 @@
 $.fn.extend({
     // NOTE: this function does not return a jQuery object!
-    amarkalUIcomponent: function( method ) {
+    amarkalUIComponent: function( method ) {
         
         // Store arguments for use with methods
         var args = arguments.length > 1 ? Array.apply(null, arguments).slice(1) : null,
