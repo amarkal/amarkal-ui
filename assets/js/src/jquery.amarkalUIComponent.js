@@ -25,8 +25,11 @@ $.fn.extend({
                 // Override the return value when calling a method
                 returnVal = comp[method].apply(comp, args);
                 
-                // Only call methods for the first element in the set
-                return false;
+                // If a method returns a value, only call it for the first 
+                // element in the set
+                if(typeof returnVal !== 'undefined') {
+                    return false;
+                }
             }
         });
         
