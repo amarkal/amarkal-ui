@@ -261,8 +261,8 @@ class Form
             {
                 $this->errors[$name]         = $error ? $error : ValidatableComponentInterface::DEFAULT_MESSAGE;
                 $component->value            = $this->old_instance[$name];
-                $component->validity         = $component::INVALID;
                 $this->final_instance[$name] = $this->old_instance[$name];
+                $component->set_validity($component::INVALID);
             }
         }
     }

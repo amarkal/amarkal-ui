@@ -3,16 +3,16 @@ Amarkal.UI.registerComponent('composite',{
         // Given value must be an object (a PHP associative array)
         for(var key in values) {
             this.$el.find('[amarkal-component-name="'+key+'"]')
-                .amarkalUIcomponent('setValue', values[key]);
+                .amarkalUIComponent('setValue', values[key]);
         }
     },
     getValue: function() {
         var values = {};
         this.$el.find('.amarkal-ui-component').each(function(){
             var name = $(this).attr('amarkal-component-name');
-            $(this).amarkalUIcomponent();
+            $(this).amarkalUIComponent();
                 
-            values[name] = $(this).amarkalUIcomponent('getValue');
+            values[name] = $(this).amarkalUIComponent('getValue');
         });
         return values;
     },

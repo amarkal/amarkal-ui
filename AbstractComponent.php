@@ -26,6 +26,8 @@ extends Template
      */
     public $composite_name_template = '{{parent_name}}[{{name}}]';
     
+    public $html_classes = array();
+    
     /**
      * Constructor
      * 
@@ -34,6 +36,12 @@ extends Template
     public function __construct( array $model = array() ) 
     {
         parent::__construct($model);
+        
+        $this->add_html_class(sprintf(
+            'amarkal-ui-component amarkal-ui-component-%s',
+            $this->component_type
+        ));
+        
         $this->on_created();
     }
     
@@ -89,11 +97,59 @@ extends Template
     /**
      * Get the name for this component by parsing the name template.
      * 
-     * @return type
+     * @return string
      */
     public function get_name()
     {
         return \str_replace('{{name}}', $this->name, $this->name_template);
+    }
+    
+    /**
+     * Add an HTML class to the list of HTML classes to be printed when the
+     * component is rendered. 
+     * 
+     * @param string $class
+     */
+    public function add_html_class( $class )
+    {
+        if( !in_array($class, $this->html_classes) )
+        {
+            $this->html_classes[] = $class;
+        }
+    }
+    
+    /**
+     * Remove an HTML class to the list of HTML classes to be printed when the
+     * component is rendered. 
+     * 
+     * @param string $class
+     */
+    public function remove_html_class( $class )
+    {
+        $i = 0;
+        foreach( $this->html_classes as $c )
+        {
+            if( $c === $class )
+            {
+                array_splice($this->html_classes,$i,1);
+                break;
+            }
+            $i++;
+        }
+    }
+    
+    /**
+     * Set the validity of this component if it supports validation.
+     * 
+     * @param type $validity
+     */
+    Public function set_validity( $validity )
+    {
+        $this->validity = $validity;
+        if($validity === $this::INVALID)
+        {
+            $this->add_html_class('amarkal-ui-component-error');
+        }
     }
     
     /**
@@ -102,8 +158,8 @@ extends Template
     public function component_attributes()
     {
         return sprintf(
-            'class="amarkal-ui-component amarkal-ui-component-%s" amarkal-component-name="%s"',
-            $this->component_type,
+            'class="%s" amarkal-component-name="%s"',
+            implode(' ', $this->html_classes),
             $this->name
         );
     }
