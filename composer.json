@@ -16,7 +16,8 @@
         "source": "https://github.com/askupasoftware/amarkal-ui"
     },
     "require": {
-        "php": ">=5.3.0"
+        "php": ">=5.3.0",
+        "askupa-software/amarkal-core": "dev-master"
     },
     "autoload": {
         "psr-4": {
