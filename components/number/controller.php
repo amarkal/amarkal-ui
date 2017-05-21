@@ -44,12 +44,12 @@ implements ValueComponentInterface,
         
         if(null !== $max && $v > $max)
         {
-            $e = "must be less than {$max}";
+            $e = sprintf( __("Value must be less than %d",'amarkal'), $max);
         }
 
         if(null !== $min && $v < $min) 
         {
-            $e = "must be greater than {$min}";
+            $e = sprintf( __("Value must be greater than %d",'amarkal'), $min);
         }
 
         return $e ? false : true;

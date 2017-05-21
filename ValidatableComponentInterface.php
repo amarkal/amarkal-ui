@@ -22,5 +22,5 @@ extends ValueComponentInterface
     const INVALID   = 'invalid';
     const VALID     = 'valid';
     
-    const DEFAULT_MESSAGE = 'was given an invalid value';
+    const DEFAULT_MESSAGE = 'The value given is invalid';
 }
