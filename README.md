@@ -2,7 +2,7 @@
 A set of UI components for WordPress.
 
 **Tested up to:** WordPress 4.7  
-**Dependencies:** none
+**Dependencies:** *[amarkal-core](https://github.com/askupasoftware/amarkal-core)*
 
 ## overview
 
