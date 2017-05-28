@@ -4,9 +4,9 @@ $.fn.extend({
         
         // Store arguments for use with methods
         var args = arguments.length > 1 ? Array.apply(null, arguments).slice(1) : null,
-            returnVal;
+            selection, methodReturnVal;
         
-        returnVal = this.each(function() {
+        selection = this.each(function() {
             
             if(!$(this).hasClass('amarkal-ui-component')) {
                 throw "This element is not an Amarkal UI component";
@@ -23,16 +23,16 @@ $.fn.extend({
             if( typeof method !== 'undefined' && comp.hasOwnProperty(method)) {
                 
                 // Override the return value when calling a method
-                returnVal = comp[method].apply(comp, args);
+                methodReturnVal = comp[method].apply(comp, args);
                 
                 // If a method returns a value, only call it for the first 
                 // element in the set
-                if(typeof returnVal !== 'undefined') {
+                if(typeof methodReturnVal !== 'undefined') {
                     return false;
                 }
             }
         });
         
-        return returnVal;
+        return typeof methodReturnVal !== 'undefined' ? methodReturnVal : selection;
     }
 });
