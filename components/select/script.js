@@ -5,9 +5,7 @@ Amarkal.UI.registerComponent('select',{
     },
     getValue: function() {
         return this.$el
-            .find('select > option[selected]')
-            .toArray()
-            .map(function(el){return el.value;})[0]; // Should be only one
+            .find('select').val()
     },
     onInit: function() {
         var _this = this;
