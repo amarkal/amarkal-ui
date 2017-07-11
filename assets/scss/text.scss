@@ -1,11 +1,12 @@
+@import 'mixins';
+
 .amarkal-ui-component-text {
     
     &.amarkal-ui-component-error input {
-        border-color: red;
-        background-color: #ffd8d8;
+        @include ui-input-error();
     }
     
     input {
-        border-radius: 3px;
+        @include ui-input();
     }
 }
