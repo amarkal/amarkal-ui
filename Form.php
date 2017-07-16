@@ -162,6 +162,10 @@ class Form
      */
     public function get_component( $name )
     {
+        if(!array_key_exists($name, $this->components))
+        {
+            throw new \RuntimeException("Can't find a component with the name <b>$name</b>");
+        }
         return $this->components[$name];
     }
     
@@ -191,7 +195,7 @@ class Form
         {
             return;
         }
-        
+
         // Apply user-defined filter
         $this->filter( $component );
         
@@ -214,7 +218,7 @@ class Form
                 true === $component->readonly
             );
     }
-    
+
     /**
      * Filter the component's value using its filter function (if applicable)
      * 
