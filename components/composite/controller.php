@@ -61,8 +61,8 @@ implements ValueComponentInterface,
             'disabled'      => false,
             'template'      => null,
             'components'    => array(),
-            'filter'        => null,
-            'validation'    => null
+            'filter'        => array($this, 'filter'),
+            'validation'    => array($this, 'validation'),
         );
     }
     
@@ -109,6 +109,38 @@ implements ValueComponentInterface,
             return "{$this->parent_name}[{$this->name}]";
         }
         return $this->name;
+    }
+
+    public function filter($v)
+    {
+        foreach($this->components as $component)
+        {
+            if($component instanceof FilterableComponentInterface &&
+               \is_callable($component->filter))
+            {
+                $n = $component->name;
+                $v[$n] = $component->filter($v[$n]);
+            }
+        }
+        
+        return $v;
+    }
+
+    public function validation($v,&$e)
+    {
+        foreach($this->components as $component)
+        {
+            if($component instanceof ValidatableComponentInterface &&
+               \is_callable($component->validation))
+            {
+                $n = $component->name;
+                if(!$component->validation($v[$n],$e))
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
     
     /**
