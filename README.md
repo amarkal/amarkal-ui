@@ -17,6 +17,7 @@ A set of UI components for WordPress.
 * [Radio](https://github.com/askupasoftware/amarkal-ui/tree/master/components/radio)
 * [Checkbox](https://github.com/askupasoftware/amarkal-ui/tree/master/components/checkbox)
 * [Composite](https://github.com/askupasoftware/amarkal-ui/tree/master/components/composite)
+* [Switch](https://github.com/askupasoftware/amarkal-ui/tree/master/components/switch)
 * Toggle (coming soon)
 * Color Picker (coming soon)
 * Attachment (coming soon)
