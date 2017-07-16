@@ -9,7 +9,7 @@ Amarkal.UI.registerComponent('checkbox',{
     },
     getValue: function() {
         return this.$el
-            .find('input[checked]')
+            .find('input:checked')
             .toArray()
             .map(function(el){return el.value;});
     },

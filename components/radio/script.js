@@ -5,7 +5,7 @@ Amarkal.UI.registerComponent('radio',{
     },
     getValue: function() {
         return this.$el
-            .find('input[checked]')
+            .find('input:checked')
             .val();
     },
     onInit: function() {
