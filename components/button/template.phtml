@@ -1,0 +1,12 @@
+<div <?php echo $this->component_attributes(); ?>>
+    <script class="amarkal-ui-component-props" type='application/json'><?php echo json_encode($this->model); ?></script>
+    <button 
+        id="<?php echo $this->id; ?>"
+        data-label-start="<?php echo $this->label_start ?>"
+        data-label-doing="<?php echo $this->label_doing ?>"
+        data-label-done="<?php echo $this->label_done ?>"
+        data-label-error="<?php echo $this->label_error ?>"
+        data-action="<?php echo $this->action ?>"
+        <?php echo ($this->readonly ? 'readonly' : ''); ?>
+        <?php echo ($this->disabled ? 'disabled' : ''); ?>></button>
+</div>

@@ -8,8 +8,12 @@ Amarkal.UI.abstractComponent = {
     reset:       function(){
         this.makeValid();
     },
-    getValue:    function(){},
-    setValue:    function(){},
+    getValue:    function(){
+        return null;
+    },
+    setValue:    function(){
+        return;
+    },
     setValidity: function(validity){
         var errorClass = 'amarkal-ui-component-error';
         if(validity === this.VALID) {
