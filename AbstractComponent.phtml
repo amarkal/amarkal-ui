@@ -1,0 +1,4 @@
+<div <?php echo $this->component_attributes(); ?>>
+    <script class="amarkal-ui-component-props" type='application/json'><?php echo json_encode($this->model); ?></script>
+    <?php parent::render(true); ?>
+</div>

@@ -1,8 +1,6 @@
-<div <?php echo $this->component_attributes(); ?>>
-    <textarea 
-        id="<?php echo $this->id; ?>"
-        name="<?php echo $this->get_name(); ?>"
-        <?php echo ($this->required ? 'aria-required="true"' : ''); ?>
-        <?php echo ($this->readonly ? 'readonly' : ''); ?>
-        <?php echo ($this->disabled ? 'disabled' : ''); ?>><?php echo $this->value; ?></textarea>
-</div>
+<textarea 
+    id="<?php echo $this->id; ?>"
+    name="<?php echo $this->get_name(); ?>"
+    <?php echo ($this->required ? 'aria-required="true"' : ''); ?>
+    <?php echo ($this->readonly ? 'readonly' : ''); ?>
+    <?php echo ($this->disabled ? 'disabled' : ''); ?>><?php echo $this->value; ?></textarea>

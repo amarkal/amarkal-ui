@@ -1,14 +1,12 @@
-<div <?php echo $this->component_attributes(); ?>>
-    <?php foreach($this->data as $value => $label): ?>
-        <label>
-            <input type="checkbox"
-                   name="<?php echo $this->get_name(); ?>" 
-                   value="<?php echo $value ?>"
-                   <?php echo ($this->required ? 'aria-required="true"' : ''); ?>
-                   <?php echo ($this->readonly ? 'readonly' : ''); ?>
-                   <?php echo ($this->disabled ? 'disabled' : ''); ?>
-                   <?php echo (in_array($value, $this->value)  ? 'checked' : ''); ?>/>
-                <?php echo $label ?>
-        </label><br/>
-    <?php endforeach ?>
-</div>
+<?php foreach($this->data as $value => $label): ?>
+    <label>
+        <input type="checkbox"
+                name="<?php echo $this->get_name(); ?>" 
+                value="<?php echo $value ?>"
+                <?php echo ($this->required ? 'aria-required="true"' : ''); ?>
+                <?php echo ($this->readonly ? 'readonly' : ''); ?>
+                <?php echo ($this->disabled ? 'disabled' : ''); ?>
+                <?php echo (in_array($value, $this->value)  ? 'checked' : ''); ?>/>
+            <?php echo $label ?>
+    </label><br/>
+<?php endforeach ?>

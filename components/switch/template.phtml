@@ -1,15 +1,13 @@
-<div <?php echo $this->component_attributes(); ?>>
-    <input 
-        type="checkbox"
-        id="<?php echo $this->id; ?>"
-        name="<?php echo $this->get_name(); ?>"
-        <?php echo ($this->required ? 'aria-required="true"' : ''); ?>
-        <?php echo ($this->readonly ? 'readonly' : ''); ?>
-        <?php echo ($this->disabled ? 'disabled' : ''); ?>
-        <?php echo ($this->value === 'on' ? 'checked' : ''); ?>/>
-    <label for="<?php echo $this->id; ?>">
-        <span class="label-on">ON</span>
-        <span class="knob"></span>
-        <span class="label-off">OFF</span>
-    </label>
-</div>
+<input 
+    type="checkbox"
+    id="<?php echo $this->id; ?>"
+    name="<?php echo $this->get_name(); ?>"
+    <?php echo ($this->required ? 'aria-required="true"' : ''); ?>
+    <?php echo ($this->readonly ? 'readonly' : ''); ?>
+    <?php echo ($this->disabled ? 'disabled' : ''); ?>
+    <?php echo ($this->value === 'on' ? 'checked' : ''); ?>/>
+<label for="<?php echo $this->id; ?>">
+    <span class="label-on">ON</span>
+    <span class="knob"></span>
+    <span class="label-off">OFF</span>
+</label>

@@ -1,15 +1,13 @@
-<div <?php echo $this->component_attributes(); ?>>
-    <input 
-        type="range"
-        id="<?php echo $this->id; ?>"
-        name="<?php echo $this->get_name(); ?>"
-        value="<?php echo $this->value; ?>"
-        <?php echo ($this->required ? 'aria-required="true"' : ''); ?>
-        <?php echo ($this->readonly ? 'readonly' : ''); ?>
-        <?php echo ($this->disabled ? 'disabled' : ''); ?>
-        <?php echo (null !== $this->min ? 'min="'.$this->min.'"' : ''); ?>
-        <?php echo (null !== $this->max ? 'max="'.$this->max.'"' : ''); ?>
-        <?php echo (null !== $this->step ? 'step="'.$this->step.'"' : ''); ?>/>
-    <div class="slider-values"></div>
-    <div class="slider-value-label"><?php echo $this->value; ?></div>
-</div>
+<input 
+    type="range"
+    id="<?php echo $this->id; ?>"
+    name="<?php echo $this->get_name(); ?>"
+    value="<?php echo $this->value; ?>"
+    <?php echo ($this->required ? 'aria-required="true"' : ''); ?>
+    <?php echo ($this->readonly ? 'readonly' : ''); ?>
+    <?php echo ($this->disabled ? 'disabled' : ''); ?>
+    <?php echo (null !== $this->min ? 'min="'.$this->min.'"' : ''); ?>
+    <?php echo (null !== $this->max ? 'max="'.$this->max.'"' : ''); ?>
+    <?php echo (null !== $this->step ? 'step="'.$this->step.'"' : ''); ?>/>
+<div class="slider-values"></div>
+<div class="slider-value-label"><?php echo $this->value; ?></div>

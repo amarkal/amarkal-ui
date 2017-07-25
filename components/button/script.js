@@ -1,6 +1,5 @@
 Amarkal.UI.registerComponent('button',{
     onInit: function() {
-        this.props = JSON.parse(this.$el.find('.amarkal-ui-component-props').text());
         this._setState('start');
         this.$el.on('click', this._onClick);
     },

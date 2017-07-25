@@ -1,5 +1,4 @@
 Amarkal.UI.registerComponent('slider',{
-    props: {},
     setValue: function(value) {
         this.$el.find('input').val(value);
         this._updateLabelPosition();
@@ -29,23 +28,15 @@ Amarkal.UI.registerComponent('slider',{
     },
 
     /**
-     * Set the component's properties
+     * Add properties to the basic props object
      */
     _setProps: function() {
-        var $range = this.$el.find('input'),
-            min = parseFloat($range.attr('min')),
-            max = parseFloat($range.attr('max')),
-            step = parseFloat($range.attr('step'));
-        
-        this.props = {
-            min: min,
-            max: max,
-            step: step,
-            delta: Math.abs(max-min),
+        this.props = $.extend({},this.props,{
+            delta: Math.abs(this.props.max-this.props.min),
             knobWidth: 26,
             labelWidth: 30, // The width of each label in the horizontal axis, in pixels (must match the CSS)
             minSpacing: 50 // Minimum spacing between labels
-        };
+        });
     },
 
     /**

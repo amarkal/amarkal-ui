@@ -172,7 +172,16 @@ extends Template
     public function render( $echo = false )
     {
         $this->enqueue_scripts();
-        return parent::render($echo);
+        
+        ob_start();
+        include dirname(__FILE__).'/AbstractComponent.phtml';
+        $html = ob_get_clean();
+
+        if( !$echo )
+        {
+            return $html;
+        }
+        echo $html;
     }
     
     /**

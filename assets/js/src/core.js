@@ -54,7 +54,8 @@ Amarkal.UI = {
             config = Amarkal.UI.getComponentConfig(type),
             comp   = $.extend({}, Amarkal.UI.abstractComponent, config);
     
-        comp.$el = $el;
+        comp.$el   = $el;
+        comp.props = JSON.parse($el.children('.amarkal-ui-component-props').text());
         
         // If the property is a function, bind the functions 'this' keyword to 
         // the component object
