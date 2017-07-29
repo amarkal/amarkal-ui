@@ -36,7 +36,7 @@ Amarkal.UI.registerComponent('button',{
     },
     _setState: function(name) {
         var $btn = this.$el.find('button');
-        $btn.text($btn.attr('data-label-'+name))
+        $btn.text(this.props['label_'+name])
             .attr('class','')
             .addClass('amarkal-ui-'+name);
     }

@@ -23,10 +23,12 @@ Amarkal.UI.registerComponent('slider',{
             _this.onChange();
         });
 
-        $(window).on('resize', this._updateLabelPosition);
-        $(window).on('resize', this._populateValueLabels);
+        $(window).on('resize', this.refresh);
     },
-
+    refresh: function() {
+        this._updateLabelPosition();
+        this._populateValueLabels();
+    },
     /**
      * Add properties to the basic props object
      */
@@ -67,9 +69,9 @@ Amarkal.UI.registerComponent('slider',{
         var $range = this.$el.find('input'),
             $labels = this.$el.find('.slider-values'),
             fn = this._formatNumber,
-            lw = 30, // Label width, in pixels (set in the style file)
-            ms = 50, // Minimum spacing between labels
             p = this.props,
+            lw = p.labelWidth,
+            ms = p.minSpacing,
             v = $range.val(),
             w = $range.width(),
             c = Math.floor(Math.min((w+ms)/(lw+ms),(p.delta/p.step)+1));

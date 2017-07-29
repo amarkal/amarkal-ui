@@ -15,6 +15,7 @@ Amarkal.UI.abstractComponent = {
     setValue:    function(){
         return;
     },
+    refresh:     function(){},
     setValidity: function(validity){
         var errorClass = 'amarkal-ui-component-error';
         if(validity === this.VALID) {
