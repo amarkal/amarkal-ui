@@ -19,7 +19,6 @@ implements ValueComponentInterface,
             'name'          => '',
             'id'            => '',
             'disabled'      => false,
-            'required'      => false,
             'readonly'      => false,
             'default'       => null,
             'filter'        => array( $this, 'filter' )

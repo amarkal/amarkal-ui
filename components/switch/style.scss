@@ -10,7 +10,7 @@ $knob-width: 26px;
         @include ui-input-error();
     }
     
-    input {
+    input[type="checkbox"] {
         display: none;
 
         &:checked + label {
