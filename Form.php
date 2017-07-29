@@ -15,7 +15,7 @@ class Form
      * 
      * @var AbstractComponent[] objects array.
      */
-    private $components = array();
+    private $component_list;
     
     /**
      * The old component values array. These values are used if the new values
@@ -57,11 +57,15 @@ class Form
      * provided. Each arguments array must have a 'type' argument, in addition 
      * to the component's original arguments.
      * 
-     * @param array $components An array of arrays of component arguments
+     * @param ComponentList $component_list
      */
-    public function __construct( array $components = array() )
+    public function __construct( ComponentList $component_list = null )
     {
-        $this->add_components($components);
+        if(null === $component_list)
+        {
+            $component_list = new ComponentList();
+        }
+        $this->component_list = $component_list;
     }
     
     /**
@@ -87,13 +91,10 @@ class Form
         $this->new_instance   = array_merge($this->old_instance,$new_instance);
         $this->final_instance = $this->new_instance;
         
-        foreach ( $this->components as $component ) 
+        foreach ( $this->component_list->get_value_components() as $component ) 
         {
             // Update individual fields, as well as the composite parent field.
-            if ( $component instanceof ValueComponentInterface )
-            {
-                $this->update_component( $component );
-            }
+            $this->update_component( $component );
         }
         
         return $this->final_instance;
@@ -106,7 +107,7 @@ class Form
      */
     public function reset()
     {
-        foreach( $this->components as $c )
+        foreach( $this->component_list->get_value_components() as $c )
         {
             $c->value = $c->default;
             $this->final_instance[$c->name] = $c->default;
@@ -126,57 +127,13 @@ class Form
     }
     
     /**
-     * Add a component to the form.
-     * 
-     * @param array $args The component arguments
-     * @throws \RuntimeException If a component with the same name has already been registered
-     */
-    public function add_component( array $args )
-    {
-        $name = $args['name'];
-        if(array_key_exists($name, $this->components))
-        {
-            throw new \RuntimeException("A component with the name <b>$name</b> has already been created");
-        }
-        $this->components[$name] = ComponentFactory::create($args['type'], $args);
-    }
-    
-    /**
-     * Add multiple components to the form.
-     * 
-     * @param array $components
-     */
-    public function add_components( array $components )
-    {
-        foreach( $components as $component )
-        {
-            $this->add_component($component);
-        }
-    }
-    
-    /**
-     * Get a component by its name.
-     * 
-     * @param string $name
-     * @return UI\AbstractComponent
-     */
-    public function get_component( $name )
-    {
-        if(!array_key_exists($name, $this->components))
-        {
-            throw new \RuntimeException("Can't find a component with the name <b>$name</b>");
-        }
-        return $this->components[$name];
-    }
-    
-    /**
      * Get all components.
      * 
      * @return array
      */
-    public function get_components()
+    public function get_component_list()
     {
-        return $this->components;
+        return $this->component_list;
     }
     
     /**
@@ -280,7 +237,7 @@ class Form
     {
         $defaults = array();
         
-        foreach( $this->components as $component )
+        foreach( $this->component_list->get_value_components() as $component )
         {
             $defaults[$component->name] = $component->default;
         }

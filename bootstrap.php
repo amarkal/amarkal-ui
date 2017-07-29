@@ -17,6 +17,7 @@ if(false !== (require_once 'functions.php'))
     // Load required classes if not using composer
     require_once 'AbstractComponent.php';
     require_once 'ComponentFactory.php';
+    require_once 'ComponentList.php';
     require_once 'DisableableComponentInterface.php';
     require_once 'FilterableComponentInterface.php';
     require_once 'Form.php';
