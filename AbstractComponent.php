@@ -26,6 +26,11 @@ extends Template
      */
     public $composite_name_template = '{{parent_name}}[{{name}}]';
     
+    /**
+     * A list of HTML classes to be added to the wrapper div of this component.
+     *
+     * @var array
+     */
     public $html_classes = array();
     
     /**
@@ -86,7 +91,7 @@ extends Template
         }
         
         // Assign the name of the component as the id if no id was specified
-        if( !isset($model['id']) )
+        if( !isset($model['id']) && isset($model['name']) )
         {
             $model['id'] = $model['name'];
         }
