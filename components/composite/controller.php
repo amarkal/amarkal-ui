@@ -22,7 +22,7 @@ implements ValueComponentInterface,
     public $component_type = 'composite';
     
     /**
-     * The __set magic method is overridden here to apply value changes to 
+     * The __set magic method is overridden here to apply value & name changes to 
      * child components.
      */
     public function __set( $name, $value )
@@ -33,12 +33,18 @@ implements ValueComponentInterface,
         {
             $this->set_value($value);
         }
+
+        if( 'name' === $name )
+        {
+            $this->set_name($value);
+        }
     }
     
     /**
      * Apply the value to each of the child components.
      * 
      * @param array $value
+     * @return void
      */
     public function set_value( array $value )
     {
@@ -46,6 +52,20 @@ implements ValueComponentInterface,
         {
             $component = $this->get_component($n);
             $component->value = $v;
+        }
+    }
+
+    /**
+     * Apply the new name to each of the child components.
+     *
+     * @param string $name
+     * @return void
+     */
+    public function set_name( $name )
+    {
+        foreach($this->components as $c)
+        {
+            $c->name_template = str_replace('{{parent_name}}', $this->get_name(), $c->composite_name_template);
         }
     }
     
