@@ -1,0 +1,16 @@
+<input 
+    type="hidden"
+    id="<?php echo $this->id; ?>"
+    name="<?php echo $this->get_name(); ?>"
+    value="<?php echo $this->multi ? implode(',',$this->value) : $this->value; ?>"
+    <?php echo ($this->required ? 'aria-required="true"' : ''); ?>
+    <?php echo ($this->readonly ? 'readonly' : ''); ?>
+    <?php echo ($this->disabled ? 'disabled' : ''); ?>/>
+
+<div class="amarkal-ui-toggle-labels-wrapper">
+    <div class="amarkal-ui-toggle-labels">
+        <?php foreach($this->data as $key => $label): ?>
+            <div data-value="<?php echo $key; ?>" <?php echo ($this->is_selected($key) ? 'class="active"' : ''); ?>><?php echo $label; ?></div>
+        <?php endforeach ?>
+    </div>
+</div>

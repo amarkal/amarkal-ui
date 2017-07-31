@@ -20,7 +20,7 @@ A set of UI components for WordPress.
 * [Switch](https://github.com/askupasoftware/amarkal-ui/tree/master/components/switch)
 * [Slider](https://github.com/askupasoftware/amarkal-ui/tree/master/components/slider)
 * [Button](https://github.com/askupasoftware/amarkal-ui/tree/master/components/button)
-* Toggle (coming soon)
+* [Toggle](https://github.com/askupasoftware/amarkal-ui/tree/master/components/toggle)
 * Color Picker (coming soon)
 * Attachment (coming soon)
 * Editor (coming soon)
