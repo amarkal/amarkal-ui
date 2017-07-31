@@ -2,10 +2,6 @@
 
 .amarkal-ui-component-button {
     
-    &.amarkal-ui-component-error input {
-        @include ui-input-error();
-    }
-    
     button {
         background-color: #0073aa;
         color: white;

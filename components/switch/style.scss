@@ -6,10 +6,6 @@ $knob-width: 26px;
 
 .amarkal-ui-component-switch {
     
-    &.amarkal-ui-component-error label {
-        @include ui-input-error();
-    }
-    
     input[type="checkbox"] {
         display: none;
 
