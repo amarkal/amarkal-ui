@@ -67,6 +67,6 @@ $new_values = array(
 $values = $form->update($new_values);
 
 // Render the component with the new value
-$component = $form->get_component('my-toggle');
+$component = $form->get_component_list()->get_by_name('my-toggle');
 $component->render(true);
 ```
