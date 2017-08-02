@@ -62,6 +62,7 @@ if(!function_exists('amarkal_ui_register_scripts'))
     function amarkal_ui_register_scripts()
     {
         \wp_register_script('amarkal-ui',Amarkal\Core\Utility::path_to_url(__DIR__.'/assets/js/dist/amarkal-ui.min.js'),array('jquery'),false,true);
+        \wp_register_script('ace-editor','https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.8/ace.js',array('jquery'),false,true);
         \wp_register_style('amarkal-ui',Amarkal\Core\Utility::path_to_url(__DIR__.'/assets/css/dist/amarkal-ui.min.css'),array());
     }
     \add_action('admin_init','amarkal_ui_register_scripts');

@@ -1,0 +1,7 @@
+<?php /* The textarea here is use for the purpose of supporting regular form submission (i.e. widgets) */?>
+<textarea 
+    name="<?php echo $this->get_name(); ?>"
+    style="display:none"><?php echo $this->value; ?></textarea>
+<div class="amarkal-ui-component-ace-editor-wrapper">
+    <div class="amarkal-ui-component-ace-editor"><?php echo \htmlspecialchars($this->value); ?></div>
+</div>

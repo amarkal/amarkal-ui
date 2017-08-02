@@ -1,0 +1,17 @@
+@import 'mixins';
+
+.amarkal-ui-component-code {
+    position: relative;
+
+    &.amarkal-ui-component-error textarea {
+        @include ui-input-error();
+    }
+    
+    .amarkal-ui-component-ace-editor {
+        border-radius: 3px;
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        border: 2px solid #d8d8d8;
+    }
+}
