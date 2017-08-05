@@ -27,7 +27,6 @@ A set of UI components for WordPress.
 * Attachment (coming soon)
 * Editor (coming soon)
 * Date (coming soon)
-* Progress Bar (coming soon)
 * HTML (coming soon)
 
 ## Installation
