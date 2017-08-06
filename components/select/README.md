@@ -26,7 +26,7 @@ Name | Type | Default | Required | Description
 No data processing (Static HTML)
 
 ```php
-amarkal_ui_render('select', array(
+$html = amarkal_ui_render('select', array(
     'name'       => 'my-select',
     'data'       => array(
         'key1'   => 'Value 1',

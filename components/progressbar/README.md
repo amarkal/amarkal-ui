@@ -15,7 +15,7 @@ Name | Type | Default | Required | Description
 No data processing (Static HTML)
 
 ```php
-amarkal_ui_render('progressbar', array(
+$html = amarkal_ui_render('progressbar', array(
     'min'             => 0,
     'max'             => 100,
     'value'           => 50

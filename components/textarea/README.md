@@ -27,7 +27,7 @@ Name | Type | Default | Required | Description
 No data processing (Static HTML)
 
 ```php
-amarkal_ui_render('textarea', array(
+$html = amarkal_ui_render('textarea', array(
     'name'            => 'my-textarea',
     'id'              => 'my-textarea',
     'disabled'        => false,

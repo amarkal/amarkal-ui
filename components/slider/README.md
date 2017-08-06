@@ -28,7 +28,7 @@ Name | Type | Default | Required | Description
 No data processing (Static HTML)
 
 ```php
-amarkal_ui_render('slider', array(
+$html = amarkal_ui_render('slider', array(
     'name'            => 'my-slider',
     'id'              => 'my-slider',
     'disabled'        => false,

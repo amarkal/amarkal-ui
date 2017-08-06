@@ -158,7 +158,7 @@ This function is used to render the HTML of a UI component of type `$type` with 
 
 **Example Usage**
 ```php
-amarkal_ui_render('text', array(
+echo amarkal_ui_render('text', array(
     'name'        => 'my-textfield',
     'value'       => 'Some cool value...'
 ));

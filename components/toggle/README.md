@@ -27,7 +27,7 @@ Name | Type | Default | Required | Description
 No data processing (Static HTML)
 
 ```php
-amarkal_ui_render('toggle', array(
+$html = amarkal_ui_render('toggle', array(
     'name'            => 'my-toggle',
     'id'              => 'my-toggle',
     'disabled'        => false,

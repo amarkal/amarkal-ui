@@ -20,7 +20,7 @@ Name | Type | Default | Required | Description
 ## Usage
 
 ```php
-amarkal_ui_render('button', array(
+$html = amarkal_ui_render('button', array(
     'id'              => 'my-button',
     'disabled'        => false,
     'readonly'        => false,

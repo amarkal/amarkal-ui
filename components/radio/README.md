@@ -25,7 +25,7 @@ Name | Type | Default | Required | Description
 No data processing (Static HTML)
 
 ```php
-amarkal_ui_render('radio', array(
+$html = amarkal_ui_render('radio', array(
     'name'     => 'my-radio',
     'disabled' => false,
     'data'     => array(

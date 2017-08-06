@@ -26,7 +26,7 @@ Name | Type | Default | Required | Description
 No data processing (Static HTML)
 
 ```php
-amarkal_ui_render('switch', array(
+$html = amarkal_ui_render('switch', array(
     'name'            => 'my-switch',
     'id'              => 'my-switch',
     'disabled'        => false,

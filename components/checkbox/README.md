@@ -27,7 +27,7 @@ Name | Type | Default | Required | Description
 No data processing (Static HTML)
 
 ```php
-amarkal_ui_render('checkbox', array(
+$html = amarkal_ui_render('checkbox', array(
     'name'     => 'my-checkboxes',
     'disabled' => false,
     'required' => false,

@@ -31,7 +31,7 @@ Name | Type | Default | Required | Description
 No data processing (Static HTML)
 
 ```php
-amarkal_ui_render('number', array(
+$html = amarkal_ui_render('number', array(
     'name'            => 'my-number-field',
     'id'              => 'my-number-field',
     'disabled'        => false,

@@ -29,7 +29,7 @@ Name | Type | Default | Required | Description
 No data processing (Static HTML)
 
 ```php
-amarkal_ui_render('code', array(
+$html = amarkal_ui_render('code', array(
     'name'            => 'my-code',
     'id'              => 'my-code',
     'disabled'        => false,
