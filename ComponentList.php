@@ -164,6 +164,7 @@ class ComponentList
      */
     private function filter( $callable )
     {
-        return array_filter($this->components, $callable);
+        // array_values is needed in order to reindex the array after filtering it
+        return array_values(array_filter($this->components, $callable));
     }
 }
