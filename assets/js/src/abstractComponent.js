@@ -30,7 +30,7 @@ Amarkal.UI.abstractComponent = {
         return this.validity;
     },
     getName: function(){
-        return this.$el.attr('amarkal-component-name');
+        return this.props.name;
     },
     makeInvalid: function(){
         this.setValidity(this.INVALID);
