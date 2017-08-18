@@ -107,11 +107,36 @@ class Form
      */
     public function reset()
     {
-        foreach( $this->component_list->get_value_components() as $c )
+        return $this->reset_components(
+            $this->component_list->get_value_components()
+        );
+    }
+
+    /**
+     * Reset the given list of components to their default values.
+     *
+     * @param array $components
+     * @return void
+     */
+    public function reset_components( array $components )
+    {
+        foreach( $components as $component )
         {
-            $c->value = $c->default;
-            $this->final_instance[$c->name] = $c->default;
+            $this->reset_component($component);
         }
+        return $this->final_instance;
+    }
+
+    /**
+     * Reset the given component to its default value.
+     *
+     * @param AbstractComponent $component
+     * @return void
+     */
+    public function reset_component( $component )
+    {
+        $component->value = $component->default;
+        $this->final_instance[$component->name] = $component->default;
         return $this->final_instance;
     }
     
