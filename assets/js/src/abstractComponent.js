@@ -6,6 +6,9 @@ Amarkal.UI.abstractComponent = {
     $el:         null,
     props:       {},
     validity:    null,
+    instance:    function(){
+        return this;
+    },
     reset:       function(){
         this.makeValid();
     },
