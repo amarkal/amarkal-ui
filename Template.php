@@ -58,6 +58,17 @@ class Template
     {
         $this->model[$name] = $value;
     }
+
+    /**
+     * Check if a model argument exists
+     *
+     * @param string $name The argument's name.
+     * @return boolean Whether this arguments exists or not.
+     */
+    public function __isset( $name )
+    {
+        return isset($this->model[$name]);
+    }
     
     /**
      * Get the current component model data.
