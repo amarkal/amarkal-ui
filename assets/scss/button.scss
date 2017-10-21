@@ -1,9 +1,20 @@
 @import 'mixins';
+@import 'variables';
 
 .amarkal-ui-component-button {
     
+    &.amarkal-ui-disabled button {
+        opacity: $disabled-component-opacity;
+        cursor: not-allowed;
+        background-color: $color-medium-gray;
+
+        &:hover {
+            opacity: $disabled-component-opacity;
+        }
+    }
+    
     button {
-        background-color: #0073aa;
+        background-color: $color-blue;
         color: white;
         padding: .5em .7em .6em;
         border: none;
@@ -23,7 +34,7 @@
         }
 
         &.amarkal-ui-done {
-            background-color: #19ce8b;
+            background-color: $color-green;
 
             &::before {
                 display: none;

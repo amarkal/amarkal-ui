@@ -1,3 +1,16 @@
+@import 'variables';
+
 .amarkal-ui-component-radio {
-    
+    &.amarkal-ui-disabled {
+        label {
+            opacity: $disabled-component-opacity;
+            cursor: not-allowed;
+
+            input {
+                cursor: not-allowed;
+                opacity: 1;
+                background-color: $disabled-component-bg-color;
+            }
+        }
+    }
 }

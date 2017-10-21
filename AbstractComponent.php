@@ -46,6 +46,11 @@ extends Template
             'amarkal-ui-component amarkal-ui-component-%s',
             $this->component_type
         ));
+
+        if($this instanceof DisableableComponentInterface && $this->disabled)
+        {
+            $this->add_html_class('amarkal-ui-disabled');
+        }
         
         $this->on_created();
     }

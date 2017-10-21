@@ -1,7 +1,9 @@
 Amarkal.UI.registerComponent('button',{
     onInit: function() {
         this._setState('start');
-        this.$el.on('click', this._onClick);
+        if(!this.props.disabled) {
+            this.$el.on('click', this._onClick);
+        }
     },
     _doing: false,
     _onClick: function(e) {

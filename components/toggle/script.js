@@ -17,23 +17,28 @@ Amarkal.UI.registerComponent('toggle',{
     },
     onInit: function() {
         var _this = this;
-        this.$el.find('.amarkal-ui-toggle-labels div').on('click',function(){
-            var prevValue = _this.getValue(),
-                newValue;
+        if(!this.props.disabled) {
+            this.$el.find('.amarkal-ui-toggle-labels div').on('click',function(){
+                _this._onClick($(this))
+            });
+        }
+    },
+    _onClick: function($el) {
+        var prevValue = this.getValue(),
+            newValue;
 
-            if(!_this.props.multi) {
-                $(this).siblings().removeClass('active');
-                $(this).addClass('active');
-                newValue = $(this).attr('data-value');
-            }
-            else {
-                $(this).toggleClass('active');
-                newValue = _this._getActiveValues();
-            }
+        if(!this.props.multi) {
+            $el.siblings().removeClass('active');
+            $el.addClass('active');
+            newValue = $el.attr('data-value');
+        }
+        else {
+            $el.toggleClass('active');
+            newValue = this._getActiveValues();
+        }
 
-            _this.setValue(newValue);
-            _this.onChange();
-        });
+        this.setValue(newValue);
+        this.onChange();
     },
     _getActiveValues: function() {
         var values = [];

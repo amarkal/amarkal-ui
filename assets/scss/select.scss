@@ -1,9 +1,15 @@
 @import 'mixins';
+@import 'variables';
 
 .amarkal-ui-component-select {
     
     &.amarkal-ui-component-error select {
         @include ui-input-error();
+    }
+
+    &.amarkal-ui-disabled select {
+        background-color: $disabled-component-bg-color;
+        opacity: $disabled-component-opacity;
     }
 
     select {

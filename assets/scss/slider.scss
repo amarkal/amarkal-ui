@@ -1,4 +1,5 @@
 @import 'mixins';
+@import 'variables';
 
 $knob-width: 26px;
 $knob-height: 20px;
@@ -20,7 +21,7 @@ $knob-color: white;
     height: 5px;
     cursor: pointer;
     box-shadow: inset 1px 1px 2px rgba(0,0,0,0.15);
-    background-color: #bdc0c3;
+    background-color: $color-medium-gray;
     border-radius: 3px;
     border: none;
 }
@@ -31,6 +32,22 @@ $knob-color: white;
 
     &.amarkal-ui-component-error label {
         @include ui-input-error();
+    }
+
+    &.amarkal-ui-disabled {
+        opacity: $disabled-component-opacity;
+
+        input::-webkit-slider-thumb {background-color: $disabled-component-bg-color;}
+        input::-moz-range-thumb {background-color: $disabled-component-bg-color;}
+        input::-ms-thumb {background-color: $disabled-component-bg-color;}
+
+        .slider-value-label {
+            background-color: $color-medium-gray;
+
+            &::after {
+                border-top-color: $color-medium-gray;
+            }
+        }
     }
     
     input {
@@ -73,7 +90,7 @@ $knob-color: white;
 
     .slider-value-label {
         position: absolute;
-        background-color: #0073aa;
+        background-color: $color-blue;
         color: white;
         padding: .1em .5em;
         font-size: .8em;
@@ -84,7 +101,7 @@ $knob-color: white;
         &::after {
             content: "";
             border: 4px solid transparent;
-            border-top-color: #0073aa;
+            border-top-color: $color-blue;
             position: absolute;
             bottom: -8px;
             left: 50%;

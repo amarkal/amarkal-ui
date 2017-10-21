@@ -1,12 +1,19 @@
 @import 'mixins';
+@import 'variables';
 
 .amarkal-ui-component-textarea {
     
     &.amarkal-ui-component-error textarea {
         @include ui-input-error();
     }
+
+    &.amarkal-ui-disabled textarea {
+        background-color: $disabled-component-bg-color;
+        opacity: $disabled-component-opacity;
+    }
     
     textarea {
+        width: 100%;
         @include ui-input();
     }
 }

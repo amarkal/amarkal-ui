@@ -1,4 +1,5 @@
 @import 'mixins';
+@import 'variables';
 
 .amarkal-ui-component-progressbar {
     position: relative;
@@ -7,13 +8,13 @@
     .amarkal-ui-progressbar {
         position: relative;
         height: 10px;
-        background-color: #bdc0c3;
+        background-color: $color-medium-gray;
         border-radius: 5px;
         box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.15);
         overflow: hidden;
 
         .amarkal-ui-progressbar-inner {
-            background-color: #0073aa;
+            background-color: $color-blue;
             position: absolute;
             top: 0;
             left: 0;
@@ -24,7 +25,7 @@
 
     .amarkal-ui-value-label {
         position: absolute;
-        background-color: #0073aa;
+        background-color: $color-blue;
         color: white;
         padding: .1em .5em;
         font-size: .8em;
@@ -36,7 +37,7 @@
         &::after {
             content: "";
             border: 4px solid transparent;
-            border-top-color: #0073aa;
+            border-top-color: $color-blue;
             position: absolute;
             bottom: -8px;
             left: 50%;

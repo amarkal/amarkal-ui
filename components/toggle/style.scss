@@ -1,21 +1,54 @@
 @import 'mixins';
+@import 'variables';
 
 .amarkal-ui-component-toggle {
     
+    &.amarkal-ui-disabled {
+        opacity: $disabled-component-opacity;
+
+        .amarkal-ui-toggle-labels-wrapper {
+            background-color: $disabled-component-bg-color;
+
+            .amarkal-ui-toggle-labels {
+                box-shadow: inset 0 0 0 2px $color-medium-gray;
+    
+                div {
+                    color: $color-medium-gray;
+                    border-right-color: $color-medium-gray;
+                    border-left-color: $color-medium-gray;
+
+                    &:hover {
+                        background-color: transparent !important;
+                        border-right-color: $color-medium-gray;
+                        color: $color-medium-gray;
+                    }
+
+                    &.active {
+                        background-color: $color-medium-gray !important;
+
+                        &:hover {
+                            color: white;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     .amarkal-ui-toggle-labels-wrapper {
         display: inline-block;
 
         .amarkal-ui-toggle-labels {
             display: flex;
-            box-shadow: inset 0 0 0 2px #0073aa;
+            box-shadow: inset 0 0 0 2px $color-blue;
             border-radius: 3px;
 
             div {
                 padding: .5em .7em .6em;
-                color: #0073aa;
+                color: $color-blue;
                 cursor: pointer;
-                border-right: 1px solid #0073aa;
-                border-left: 1px solid #0073aa;
+                border-right: 1px solid $color-blue;
+                border-left: 1px solid $color-blue;
 
                 &:first-child {
                     border-radius: 3px 0 0 3px;
@@ -35,7 +68,7 @@
 
                 &.active:not(:hover) {
                     color: white;
-                    background-color: #0073aa;
+                    background-color: $color-blue;
                 }
             }
         }

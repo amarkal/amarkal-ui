@@ -1,10 +1,15 @@
 @import 'mixins';
+@import 'variables';
 
 .amarkal-ui-component-code {
     position: relative;
 
-    &.amarkal-ui-component-error textarea {
-        @include ui-input-error();
+    &.amarkal-ui-disabled {
+        opacity: $disabled-component-opacity;
+
+        .ace_content {
+            background-color: $disabled-component-bg-color;            
+        }
     }
     
     .amarkal-ui-component-ace-editor {
