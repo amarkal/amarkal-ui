@@ -23,11 +23,11 @@ A set of UI components for WordPress.
 * [Toggle](https://github.com/askupasoftware/amarkal-ui/tree/master/components/toggle)
 * [Code](https://github.com/askupasoftware/amarkal-ui/tree/master/components/code)
 * [Progress Bar](https://github.com/askupasoftware/amarkal-ui/tree/master/components/progressbar)
+* [HTML](https://github.com/askupasoftware/amarkal-ui/tree/master/components/html)
 * Color Picker (coming soon)
 * Attachment (coming soon)
 * Editor (coming soon)
 * Date (coming soon)
-* HTML (coming soon)
 
 ## Installation
 
