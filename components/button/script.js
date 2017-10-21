@@ -13,12 +13,22 @@ Amarkal.UI.registerComponent('button',{
             this._setState('doing');
             $.ajax({
                 url: this.props.request_url,
-                data: this.props.request_data,
+                data: this._getRequestData(),
                 method: this.props.request_method,
                 success: this._onDone,
                 error: this._onError
             });
         }
+    },
+    _getRequestData: function() {
+        var data = Object.assign({}, this.props.request_data),
+            values = this.$el.closest('form').amarkalUIForm('getData');
+        for(key in data) {
+            data[key] = data[key].replace(/(\{\{([\w\d-]*)\}\})/g, function (match, p1, p2) {
+                return values[p2.trim()];
+            });
+        }
+        return data;
     },
     _onDone: function(res) {
         var _this = this;

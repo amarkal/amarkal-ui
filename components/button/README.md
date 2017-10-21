@@ -14,7 +14,7 @@ Name | Type | Default | Required | Description
 `label_done`|*string*|`'Done'`|No|Specifies the button's label when the request is completed successfully.
 `label_error`|*string*|`'Error'`|No|Specifies the button's label when the server returns an error.
 `request_url`|*string*|`null`|Yes|Specifies the URL for the request.
-`request_data`|*array*|`array()`|No|Specifies the set of parameters to be sent to the server.
+`request_data`|*array*|`array()`|No|Specifies the set of parameters to be sent to the server. You can use double curley braces to insert component values from the containing form (see example below).
 `request_method`|*string*|`'POST'`|No|Specifies the HTTP method for the request (`'POST'`, `'GET'` etc.).
 
 ## Usage
@@ -37,4 +37,26 @@ function button_callback() {
     echo 'Hello World!';
     wp_die();
 }
+```
+
+### Sending component values with `UI\Form`
+
+You can retrieve the values of other components in the containing form and send them as request data by using double curley braces around their names, i.e. `{{component_name}}`.
+
+```php
+$form = new Amarkal\UI\Form(array(
+    array(
+        'name'          => 'my_text',
+        'type'          => 'text'
+    ),
+    array(
+        'type'          => 'button',
+        'request_url'   => admin_url('admin-ajax.php'),
+        'request_data'  => array(
+            'action'        => 'my_button_callback',
+            'text'          => '{{my_text}}'
+        )
+        'label_start'   => 'Do Something'
+    )
+));
 ```
