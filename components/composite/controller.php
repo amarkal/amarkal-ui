@@ -81,6 +81,7 @@ implements ValueComponentInterface,
             'disabled'      => false,
             'template'      => null,
             'components'    => array(),
+            'default'       => array(),
             'filter'        => array($this, 'filter'),
             'validation'    => array($this, 'validation'),
         );

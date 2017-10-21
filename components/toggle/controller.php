@@ -13,6 +13,15 @@ implements ValueComponentInterface,
 {
     public $component_type = 'toggle';
     
+    protected function on_created() 
+    {
+        if($this->multi && !\is_array($this->default)
+        || !$this->multi && \is_array($this->default))
+        {
+            throw new \RuntimeException("The default value must be an array if multi is set to true, and must be a string otherwise.");
+        }
+    }
+
     public function default_model() 
     {
         return array(
