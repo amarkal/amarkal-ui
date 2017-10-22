@@ -110,8 +110,9 @@ implements ValueComponentInterface,
      */
     public function parse_template()
     {
-        return preg_replace_callback('/\{\{([a-zA-Z\d-_]+)\}\}/', function($a){
-            $component = $this->get_component($a[1]);
+        $self = $this;
+        return preg_replace_callback('/\{\{([a-zA-Z\d-_]+)\}\}/', function($a) use($self) {
+            $component = $self->get_component($a[1]);
             return $component->render();
         }, $this->model['template']);
     }
@@ -163,6 +164,22 @@ implements ValueComponentInterface,
         }
         return true;
     }
+
+    /**
+     * Get a child component by name.
+     * 
+     * @param string $name
+     * @return UI\AbstractComponent
+     * @throws \RuntimeException If there's no child component corresponding to the given name
+     */
+    public function get_component( $name )
+    {
+        if(!array_key_exists($name, $this->components))
+        {
+            throw new \RuntimeException("Composite sub-component not found with name $name");
+        }
+        return $this->components[$name];
+    }
     
     /**
      * Instantiate child UI components when created.
@@ -195,21 +212,5 @@ implements ValueComponentInterface,
         $c->name_template = str_replace('{{parent_name}}', $this->get_name(), $c->composite_name_template);
         
         return $c;
-    }
-    
-    /**
-     * Get a child component by name.
-     * 
-     * @param string $name
-     * @return UI\AbstractComponent
-     * @throws \RuntimeException If there's no child component corresponding to the given name
-     */
-    private function get_component( $name )
-    {
-        if(!array_key_exists($name, $this->components))
-        {
-            throw new \RuntimeException("Composite sub-component not found with name $name");
-        }
-        return $this->components[$name];
     }
 }
