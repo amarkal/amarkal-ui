@@ -1,0 +1,1 @@
+Amarkal.UI.registerComponent('html',{});

@@ -13,13 +13,9 @@ extends AbstractComponent
     public function default_model() 
     {
         return array(
-            'html'          => ''
+            'html'          => '',
+            'template'      => false
         );
-    }
-    
-    public function required_arguments()
-    {
-        return array('html');
     }
     
     public function get_template_path() 
