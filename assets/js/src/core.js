@@ -1,13 +1,6 @@
-var Amarkal;
-if(typeof global.Amarkal === "undefined") {
-    Amarkal = {};
-    global.Amarkal = Amarkal;
-}
-else {
-    Amarkal = global.Amarkal;
-}
+var $ = window.jQuery;
 
-Amarkal.UI = {
+exports.UI = {
     
     /**
      * Stores the list of registered component types

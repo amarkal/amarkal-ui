@@ -18,7 +18,7 @@ module.exports = function(grunt) {
             },
             js: {
                 files: ['<%= dirs.js %>/src/*.js','components/**/*.js'],
-                tasks: ['concat:js','uglify']
+                tasks: ['uglify']
             },
             scss: {
                 files: ['<%= dirs.scss %>/*.scss','components/**/*.scss'],
@@ -43,22 +43,6 @@ module.exports = function(grunt) {
                 },
                 src: ['<%= dirs.css %>/src/*.css'],
                 dest: '<%= dirs.css %>/dist/amarkal-ui.min.css'
-            },
-            js: {
-                options: {
-                    banner: '(function($,global){',
-                    footer: '})(jQuery, window);',
-                    separator: "\n"
-                },
-                src: [
-                    '<%= dirs.js %>/src/core.js',
-                    '<%= dirs.js %>/src/abstractComponent.js',
-                    '<%= dirs.js %>/src/form.js',
-                    '<%= dirs.js %>/src/jquery.amarkalUIComponent.js',
-                    '<%= dirs.js %>/src/jquery.amarkalUIForm.js',
-                    'components/**/*.js'
-                ],
-                dest: '<%= dirs.js %>/dist/amarkal-ui.min.js'
             }
         },
         copy: {
@@ -80,10 +64,18 @@ module.exports = function(grunt) {
         uglify: {
             main: {
                 options: {
-                    banner: ''
+                    sourceMap: true,
+                    wrap: 'Amarkal'
                 },
                 files: {
-                    '<%= dirs.js %>/dist/amarkal-ui.min.js': ['<%= dirs.js %>/dist/amarkal-ui.min.js']
+                    '<%= dirs.js %>/dist/amarkal-ui.min.js': [
+                        '<%= dirs.js %>/src/core.js',
+                        '<%= dirs.js %>/src/abstractComponent.js',
+                        '<%= dirs.js %>/src/form.js',
+                        '<%= dirs.js %>/src/jquery.amarkalUIComponent.js',
+                        '<%= dirs.js %>/src/jquery.amarkalUIForm.js',
+                        'components/**/*.js'
+                    ]
                 }
             }
         }
