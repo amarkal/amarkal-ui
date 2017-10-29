@@ -24,7 +24,7 @@ implements ValueComponentInterface,
             'default'       => null,
             'language'      => null,
             'theme'         => 'github',
-            'max_lines'     => 5, // Or Infinity
+            'max_lines'     => 'Infinity', // Or a positive integer
             'filter'        => null,
             'validation'    => null
         );

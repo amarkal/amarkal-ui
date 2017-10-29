@@ -12,7 +12,7 @@ Name | Type | Default | Required | Description
 `readonly`|*boolean*|`false`|No|Sets the input control to read-only. It won't allow the user to change the value. The control however, can receive focus and are included when tabbing through the form controls.
 `language`|*string*|`null`|Yes|Specifies which programming language syntax to use. See [ace.c9.io/build/kitchen-sink.html](https://ace.c9.io/build/kitchen-sink.html) for supported languages.
 `theme`|*string*|`'github'`|No|Specifies which theme to use. See [ace.c9.io/build/kitchen-sink.html](https://ace.c9.io/build/kitchen-sink.html) for available themes.
-`max_lines`|*number*|`5`|No|Specifies the maximum number of lines the editor should expand to before making the content scrollable.
+`max_lines`|*number|string*|`'Infinity'`|No|Specifies the maximum number of lines the editor should expand to before making the content scrollable. If set to 'Infinity', the editor will expand to show all lines.
 
 ### Additional `UI\Form` Arguments
 
