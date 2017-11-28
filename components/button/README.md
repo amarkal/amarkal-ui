@@ -23,7 +23,7 @@ When using `Amarkal\UI\Form` to process component data, the following arguments 
 
 Name | Type | Default | Required | Description
 ---|---|---|:---:|---
-`show`|*string*|`null`|No|Specifies visibility condition for this component. See [visibility conditions](../../#visibility-conditions)
+`show`|*string*|`null`|No|Specifies visibility condition for this component. See [visibility conditions](../../../../#visibility-conditions)
 
 ## Usage
 
