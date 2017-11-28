@@ -100,6 +100,12 @@ extends Template
         {
             $model['id'] = $model['name'];
         }
+
+        // A name must be specified when a component has a visibility condition
+        if( isset($model['show']) && !isset($model['name']) )
+        {
+            throw new \RuntimeException('Components with a visibility condition (a "show" argument) must have a name');
+        }
         
         $this->model = array_merge( $this->default_model(), $model );
     }

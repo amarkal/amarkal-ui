@@ -71,6 +71,7 @@ module.exports = function(grunt) {
                     '<%= dirs.js %>/dist/amarkal-ui.min.js': [
                         '<%= dirs.js %>/src/core.js',
                         '<%= dirs.js %>/src/abstractComponent.js',
+                        '<%= dirs.js %>/src/visibilityManager.js',
                         '<%= dirs.js %>/src/form.js',
                         '<%= dirs.js %>/src/jquery.amarkalUIComponent.js',
                         '<%= dirs.js %>/src/jquery.amarkalUIForm.js',

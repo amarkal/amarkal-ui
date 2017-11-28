@@ -6,7 +6,7 @@ A set of UI components for WordPress.
 
 ## overview
 
-**amarkal-ui** is a set of UI components that can be used for building anything from user contact forms to admin options pages.
+**amarkal-ui** is a set of UI components and tools that can be used for building user interfaces in a WordPress environment.
 
 ### Available Components
 
@@ -64,9 +64,40 @@ require_once 'path/to/vendor/autoload.php';
 require_once 'path/to/amarkal-ui/bootstrap.php';
 ```
 
-## Processing Form Data
+## Rendering components
 
-You can process form data by using `Amarkal\UI\Form`. The `Form` object takes a list of UI components and loops through them to produce the final values that can then be stored into the database or further processed.
+The `amarkal_ui_render($type, $props)` method is used to generate the HTML of the component whose `$type` is given. For example, the following code will 
+render a `text` component:
+
+```php
+echo amarkal_ui_render('text', array(
+    'name'        => 'my-textfield',
+    'value'       => 'Some cool value...'
+));
+```
+
+And the output will be:
+
+```html
+<div class="amarkal-ui-component amarkal-ui-component-text" amarkal-component-name="my-textfield">
+    <script class="amarkal-ui-component-props" type="application/json">{"name":"my-textfield","id":"my-textfield","value":"Some cool value..."}</script>
+    <input type="text" id="my-textfield" name="my-textfield" value="Some cool value...">
+</div>
+```
+
+You can then use `jQuery(...).amarkalUIComponent()` to control the component in the front-end. For example, to get its value, you can call:
+
+```js
+var value = $('.amarkal-ui-component-text').amarkalUIComponent('getValue');
+```
+
+## Working with forms
+
+While you can use components individually, when you have multiple components it makes sense to work in the context of a form. The `Amarkal\UI\Form` PHP class and its corresponding jQuery method `jQuery.amarkalUIForm(...)` allows you to easily process data and communicate it between the server and the client. Additionally, working with forms allows you to specifiy visibility conditions to any form components.
+
+### Data processing
+
+The `Amarkal\UI\Form` object takes a list of UI components and loops through them to produce the final values that can then be stored into the database or further processed.
 
 ### Instantiating The Form Object
 
@@ -143,9 +174,52 @@ array(1) {
 }
 ```
 
+### Visibility conditions
+
+When working in the context of forms, components can receive visibility conditions to show/hide them based on the values of other components in the form. For example:
+
+```php
+$form = new Amarkal\UI\Form(array(
+    array(
+        'name'       => 'my_number',
+        'type'       => 'number'
+    ),
+    array(
+        'name'       => 'my_text',
+        'type'       => 'text',
+        'show'       => '{{my_number}} === 3'
+    )
+));
+```
+
+Based on the above condition, `my_text` will only be visible if the value of `my_number` equals 3.
+
+**Syntax**
+
+Visibility conditions are written in pure javascript, while component values can be insrted to them by using double curly braces around the component's name (i.e. `{{component_name}}`). The component placeholders are replaced during runtime by the component's value. This means that you can write simple conditions like:
+```
+{{my_text}} === 'foo'
+```
+Or more complex conditions, like:
+```
+{{my_switch}} === 'on' && {{my_slider}} >= 30
+```
+Or even use functions:
+```
+Math.floor({{my_number}}) >= 10
+```
+
+**How does it work?**
+
+Internally, Amarkal uses a graph data structure to describe the relationships between all the components, based on their visibility conditions. When a component changes its value, the algorithm checks if there are other compnents that might be affected by this change, and evaluates their condition to see if their visibility state should be changed.
+
+> NOTE: Components with a visibility condition MUST have a name
+
 ## Reference
 
-### amarkal_ui_render
+### PHP Reference
+
+#### amarkal_ui_render
 *Render a UI component.*
 ```php
 amarkal_ui_render( $type, array $props = array() )
@@ -164,7 +238,7 @@ echo amarkal_ui_render('text', array(
 ));
 ```
 
-### amarkal_ui_register_component
+#### amarkal_ui_register_component
 *Register a custom UI component.*
 ```php
 amarkal_ui_register_component( $type, $class_name )
@@ -191,3 +265,108 @@ echo amarkal_ui_render('my_custom_component', array(
     'prop' => 'value'
 ));
 ```
+
+### JS Reference
+
+#### jQuery.amarkalUIComponent(...)
+
+Instantiate an amarkal UI component and/or call a component's method.
+
+**Supported methods**
+* `getValue()`
+
+  Returns the value of the component
+  ```js
+  var value = $('#my-component').amarkalUIComponent('getValue');
+  ```
+* `setValue( value )`
+
+  Sets the value of the component
+  ```js
+  var value = 'foo';
+  $('#my-component').amarkalUIComponent('setValue', value);
+  ```
+* `getProps()`
+
+  Get the `props` object for this component.
+  ```js
+  var props = $('#my-component').amarkalUIComponent('getProps');
+  ```
+* `getName()`
+
+  Get the name of this component. Similar to calling `getProps().name`.
+  ```js
+  var name = $('#my-component').amarkalUIComponent('getName');
+  ```
+* `reset()`
+
+  Reset this component to its default state.
+  ```js
+  $('#my-component').amarkalUIComponent('reset');
+  ```
+* `refresh()`
+
+  Re-render this component. This is applicable for components whose appearance depends on their container element, like the `slider` component. For such components, it is necessary to refresh them after their container's width has changed, or when it turns from a hidden to a visible state.
+  ```js
+  $('#my-component').amarkalUIComponent('reset');
+  ```
+
+#### Events
+* `amarkal.change`
+
+  Triggered when the component's value changes.
+  ```js
+  $('#my-component').on('amarkal.change', function(){...});
+  ```
+* `amarkal.show`
+
+  Triggered when the component's visibility condition turns from unsatisfied to satisfied.
+  ```js
+  $('#my-component').on('amarkal.show', function(){...});
+  ```
+* `amarkal.hide`
+
+  Triggered when the component's visibility condition turns from satisfied to unsatisfied.
+  ```js
+  $('#my-component').on('amarkal.hide', function(){...});
+  ```
+
+  #### jQuery.amarkalUIForm(...)
+
+  Instantiate an amarkal UI form, and/or call a form's method.
+
+  **Supported methods**
+* `getData()`
+
+  Returns an object containing the values of all the components in the form.
+  ```js
+  var values = $('#my-form').amarkalUIForm('getData');
+  // 'values' is an object whose keys are the names of all the components names
+  ```
+* `setData( data )`
+
+  Sets the values of all the components based on the given data object.
+  ```js
+  var data = {
+      'component_name': 'component_value'
+  };
+  $('#my-form').amarkalUIForm('setData', data);
+  ```
+* `getValue( name )`
+
+  Get the value of the component whose name is given.
+  ```js
+  var value = $('#my-form').amarkalUIForm('getValue', 'component_name');
+  ```
+* `getComponent( name )`
+
+  Get the instance of the component whose name is given.
+  ```js
+  var $component = $('#my-form').amarkalUIForm('getComponent', 'component_name');
+  ```
+* `isVisible( name )`
+
+  Get the visibility state of the component whose name is given, based on its visibility condition.
+  ```js
+  var visible = $('#my-form').amarkalUIForm('isVisible', 'component_name');
+  ```

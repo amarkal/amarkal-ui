@@ -8,6 +8,14 @@ Name | Type | Default | Required | Description
 ---|---|---|:---:|---
 `html`|*string*|`''`|Yes|Specifies HTML to display.
 
+### Additional `UI\Form` Arguments
+
+When using `Amarkal\UI\Form` to process component data, the following arguments may be used in addition to the basic component arguments.
+
+Name | Type | Default | Required | Description
+---|---|---|:---:|---
+`show`|*string*|`null`|No|Specifies visibility condition for this component. See [visibility conditions](../../#visibility-conditions)
+
 ## Usage
 
 No data processing (Static HTML)

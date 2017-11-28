@@ -33,7 +33,8 @@ implements ValueComponentInterface,
             'multi'         => false,
             'data'          => array(),
             'default'       => array(),
-            'filter'        => array( $this, 'filter' )
+            'filter'        => array( $this, 'filter' ),
+            'show'          => null
         );
     }
     

@@ -23,7 +23,8 @@ implements DisableableComponentInterface
             'label_error'    => 'Error',
             'request_url'    => null,
             'request_data'   => array(),
-            'request_method' => 'POST'
+            'request_method' => 'POST',
+            'show'           => null
         );
     }
     

@@ -15,7 +15,8 @@ extends AbstractComponent
         return array(
             'min'           => null,
             'max'           => null,
-            'value'         => null
+            'value'         => null,
+            'show'          => null
         );
     }
     

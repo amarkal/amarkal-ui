@@ -21,7 +21,8 @@ implements ValueComponentInterface,
             'required'      => false,
             'readonly'      => false,
             'data'          => array(),
-            'default'       => null
+            'default'       => null,
+            'show'          => null
         );
     }
     

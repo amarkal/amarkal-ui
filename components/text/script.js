@@ -7,7 +7,7 @@ Amarkal.UI.registerComponent('text',{
     },
     onInit: function() {
         var _this = this;
-        this.$el.on('keyup',function(){
+        this.$el.find('input').on('keyup',function(){
             _this.onChange();
         });
     }

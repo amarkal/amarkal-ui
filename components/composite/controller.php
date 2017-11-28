@@ -84,6 +84,7 @@ implements ValueComponentInterface,
             'default'       => array(),
             'filter'        => array($this, 'filter'),
             'validation'    => array($this, 'validation'),
+            'show'          => null
         );
     }
     

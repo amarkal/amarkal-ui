@@ -26,7 +26,8 @@ implements ValueComponentInterface,
             'readonly'      => false,
             'default'       => null,
             'filter'        => null,
-            'validation'    => null
+            'validation'    => null,
+            'show'          => null
         );
     }
     

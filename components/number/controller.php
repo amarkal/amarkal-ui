@@ -28,7 +28,8 @@ implements ValueComponentInterface,
             'readonly'      => false,
             'default'       => null,
             'filter'        => array( $this, 'filter' ),
-            'validation'    => array( $this, 'validation' )
+            'validation'    => array( $this, 'validation' ),
+            'show'          => null
         );
     }
     

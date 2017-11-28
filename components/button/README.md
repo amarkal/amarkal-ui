@@ -17,6 +17,14 @@ Name | Type | Default | Required | Description
 `request_data`|*array*|`array()`|No|Specifies the set of parameters to be sent to the server. You can use double curley braces to insert component values from the containing form (see example below).
 `request_method`|*string*|`'POST'`|No|Specifies the HTTP method for the request (`'POST'`, `'GET'` etc.).
 
+### Additional `UI\Form` Arguments
+
+When using `Amarkal\UI\Form` to process component data, the following arguments may be used in addition to the basic component arguments.
+
+Name | Type | Default | Required | Description
+---|---|---|:---:|---
+`show`|*string*|`null`|No|Specifies visibility condition for this component. See [visibility conditions](../../#visibility-conditions)
+
 ## Usage
 
 ```php

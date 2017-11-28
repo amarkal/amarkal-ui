@@ -21,7 +21,8 @@ implements ValueComponentInterface,
             'disabled'      => false,
             'readonly'      => false,
             'default'       => null,
-            'filter'        => array( $this, 'filter' )
+            'filter'        => array( $this, 'filter' ),
+            'show'          => null
         );
     }
     

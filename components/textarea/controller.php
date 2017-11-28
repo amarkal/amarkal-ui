@@ -25,7 +25,8 @@ implements ValueComponentInterface,
             'rows'          => 5,
             'default'       => null,
             'filter'        => null,
-            'validation'    => null
+            'validation'    => null,
+            'show'          => null
         );
     }
     

@@ -26,10 +26,10 @@ Amarkal.UI.registerComponent('code',{
         this.setValue(this.props.value);
 
         el.on('keyup',function(){
-            _this.onChange();
-
             // This is needed for regular form submissions (without using the Amarkal JS API)
             _this.$el.children('textarea').val(_this.editor.getValue());
+            
+            _this.onChange();
         });
     },
     refresh: function() {

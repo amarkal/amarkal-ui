@@ -14,8 +14,8 @@ Amarkal.UI.registerComponent('switch',{
     onInit: function() {
         var _this = this;
         this.$el.find('input[type="checkbox"]').on('change',function(e){
-            _this.onChange();
             _this.$el.find('input[type="hidden"]').val(e.target.checked ? 'on' : 'off');
+            _this.onChange();
         });
     }
 });

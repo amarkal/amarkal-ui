@@ -25,7 +25,8 @@ implements ValueComponentInterface,
             'min'           => null,
             'max'           => null,
             'step'          => 1,
-            'filter'        => array( $this, 'filter' )
+            'filter'        => array( $this, 'filter' ),
+            'show'          => null
         );
     }
     

@@ -15,6 +15,9 @@ Amarkal.UI.abstractComponent = {
     getValue:    function(){
         return null;
     },
+    getProps:    function(){
+        return this.props;
+    },
     setValue:    function(){
         return;
     },
@@ -45,7 +48,16 @@ Amarkal.UI.abstractComponent = {
     onChange:    function(){
         this.$el.trigger('amarkal.change',[this]);
     },
-    
+    show:        function(){
+        this.$el.show();
+        this.refresh();
+        this.$el.trigger('amarkal.show',[this]);
+    },
+    hide:        function(){
+        this.$el.hide();
+        this.$el.trigger('amarkal.hide',[this]);
+    },
+
     // Constants
     VALID: 'valid',
     INVALID: 'invalid'

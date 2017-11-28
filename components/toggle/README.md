@@ -21,6 +21,7 @@ When using `Amarkal\UI\Form` to process component data, the following arguments 
 Name | Type | Default | Required | Description
 ---|---|---|:---:|---
 `default`|*array|string*|`array()`|No|Specifies the default value for this component. If `multi` is set to `true`, this should be an array. Otherwise it should be a string.
+`show`|*string*|`null`|No|Specifies visibility condition for this component. See [visibility conditions](../../#visibility-conditions)
 
 ## Usage
 

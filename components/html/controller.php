@@ -14,7 +14,8 @@ extends AbstractComponent
     {
         return array(
             'html'          => '',
-            'template'      => false
+            'template'      => false,
+            'show'          => null
         );
     }
     
