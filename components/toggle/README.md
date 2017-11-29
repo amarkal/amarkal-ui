@@ -23,6 +23,16 @@ Name | Type | Default | Required | Description
 `default`|*array|string*|`array()`|No|Specifies the default value for this component. If `multi` is set to `true`, this should be an array. Otherwise it should be a string.
 `show`|*string*|`null`|No|Specifies visibility condition for this component. See [visibility conditions](../../../../#visibility-conditions)
 
+## Value
+
+This component returns a string (if `multi` is set to `false`) or an array (if `multi` is set to `true`). For example:
+
+```json
+["value1","value2"]
+// Or
+"value1"
+```
+
 ## Usage
 
 No data processing (Static HTML)

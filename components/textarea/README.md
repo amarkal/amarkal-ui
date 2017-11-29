@@ -24,6 +24,14 @@ Name | Type | Default | Required | Description
 `validation`|*function*|`null`|No|Specifies a validation function to validate the data before it is stored in the database. If the data is invalid, the previous value will be used (or the default value if there was no previous data), and an error message will be given.
 `show`|*string*|`null`|No|Specifies visibility condition for this component. See [visibility conditions](../../../../#visibility-conditions)
 
+## Value
+
+This component returns a string. For example:
+
+```json
+"My textarea value..."
+```
+
 ## Usage
 
 No data processing (Static HTML)

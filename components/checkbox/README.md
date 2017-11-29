@@ -2,8 +2,6 @@
 
 The `checkbox` field lets the user select one or more options from a set of alternatives.
 
-The value of a checkbox component is stored as an array of all the checked boxes values.
-
 ## Arguments
 
 Name | Type | Default | Required | Description
@@ -22,6 +20,14 @@ Name | Type | Default | Required | Description
 ---|---|---|:---:|---
 `default`|*array*|`null`|No|Specifies the default value for this component.
 `show`|*string*|`null`|No|Specifies visibility condition for this component. See [visibility conditions](../../../../#visibility-conditions)
+
+## Value
+
+This component returns an array of all the checked values. For example:
+
+```json
+["value1", "value2"]
+```
 
 ## Usage
 

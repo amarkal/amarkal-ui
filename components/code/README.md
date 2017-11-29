@@ -29,6 +29,14 @@ Name | Type | Default | Required | Description
 
 No data processing (Static HTML)
 
+## Value
+
+This component returns a string. For example:
+
+```json
+"code line1\ncode line 2"
+```
+
 ```php
 $html = amarkal_ui_render('code', array(
     'name'            => 'my-code',

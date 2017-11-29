@@ -24,6 +24,14 @@ Name | Type | Default | Required | Description
 `default`|*array*|`null`|No|Specifies the default value for this component.
 `show`|*string*|`null`|No|Specifies visibility condition for this component. See [visibility conditions](../../../../#visibility-conditions)
 
+## Value
+
+This component returns a number. For example:
+
+```json
+15.7
+```
+
 ## Usage
 
 No data processing (Static HTML)

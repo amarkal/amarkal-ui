@@ -2,8 +2,6 @@
 
 The `switch` field lets the user select between two options - ON or OFF.
 
-The value of a `switch` component is stored as a string of either `'on'` or `'off'`.
-
 ## Arguments
 
 Name | Type | Default | Required | Description
@@ -21,6 +19,10 @@ Name | Type | Default | Required | Description
 ---|---|---|:---:|---
 `default`|*array*|`null`|No|Specifies the default value for this component.
 `show`|*string*|`null`|No|Specifies visibility condition for this component. See [visibility conditions](../../../../#visibility-conditions)
+
+## Value
+
+This component returns a string of either `"on"` or `"off"`.
 
 ## Usage
 

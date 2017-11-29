@@ -18,6 +18,10 @@ Name | Type | Default | Required | Description
 ---|---|---|:---:|---
 `show`|*string*|`null`|No|Specifies visibility condition for this component. See [visibility conditions](../../../../#visibility-conditions)
 
+## Value
+
+This component has no value.
+
 ## Usage
 
 No data processing (Static HTML)
