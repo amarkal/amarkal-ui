@@ -15,7 +15,7 @@ $.fn.extend({
 
         var form = $form.data('amarkal-ui-form');
         if( typeof method !== 'undefined' && typeof form[method] !== 'undefined') {
-            data = form[method](args);
+            data = form[method].apply(form, args);
         }
         
         return data;

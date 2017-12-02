@@ -15,11 +15,14 @@ Amarkal.UI.abstractComponent = {
     getValue:    function(){
         return null;
     },
+    setValue:    function(){
+        return;
+    },
     getProps:    function(){
         return this.props;
     },
-    setValue:    function(){
-        return;
+    setProps:    function(newProps){
+        this.props = Object.assign({}, this.props, newProps);
     },
     refresh:     function(){},
     setValidity: function(validity){

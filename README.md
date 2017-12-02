@@ -292,6 +292,12 @@ Instantiate an amarkal UI component and/or call a component's method.
   ```js
   var props = $('#my-component').amarkalUIComponent('getProps');
   ```
+* `setProps()`
+
+  Merge the `props` object of this component with the given object.
+  ```js
+  $('#my-component').amarkalUIComponent('setProps', {propName: 'propValue'});
+  ```
 * `getName()`
 
   Get the name of this component. Similar to calling `getProps().name`.
@@ -369,4 +375,10 @@ Instantiate an amarkal UI component and/or call a component's method.
   Get the visibility state of the component whose name is given, based on its visibility condition.
   ```js
   var visible = $('#my-form').amarkalUIForm('isVisible', 'component_name');
+  ```
+  * `refresh()`
+
+  Refresh all the components in this form.
+  ```js
+  $('#my-form').amarkalUIForm('refresh');
   ```

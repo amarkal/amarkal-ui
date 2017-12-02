@@ -17,10 +17,26 @@ Amarkal.UI.form.prototype.isVisible = function (name) {
 };
 
 /**
+ * Refresh all the components in this form
+ */
+Amarkal.UI.form.prototype.refresh = function () {
+    this.$components.each(function(){
+        $(this).amarkalUIComponent('refresh');
+    });
+};
+
+/**
  * Get a component by its name
  */
 Amarkal.UI.form.prototype.getComponent = function (name) {
-    return this.$components.filter('[amarkal-component-name="'+name+'"]');
+    var $component;
+    this.$components.each(function(){
+        if($(this).amarkalUIComponent('getName') === name) {
+            $component = $(this);
+            return false;
+        }
+    });
+    return $component;
 };
 
 /**
