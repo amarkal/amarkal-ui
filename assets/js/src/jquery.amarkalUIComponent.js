@@ -1,5 +1,5 @@
 $.fn.extend({
-    // NOTE: this function does not return a jQuery object!
+    // NOTE: this function does not always return a jQuery object!
     amarkalUIComponent: function( method ) {
         
         // Store arguments for use with methods

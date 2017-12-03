@@ -39,7 +39,7 @@ Amarkal.UI.abstractComponent = {
         return this.validity;
     },
     getName: function(){
-        return this.props.name;
+        return typeof this.props.name === 'undefined' ? false : this.props.name;
     },
     makeInvalid: function(){
         this.setValidity(this.INVALID);

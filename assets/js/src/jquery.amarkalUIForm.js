@@ -4,20 +4,32 @@ $.fn.extend({
         
         // Store arguments for use with methods
         var args  = arguments.length > 1 ? Array.apply(null, arguments).slice(1) : [],
-            data  = {},
-            $form = $(this[0]);
+            methodReturnVal,
+            selection,
+            $form = $(this[0]),
+            form = $form.data('amarkal-ui-form')
         
-        // If this is the initial call for this form, instantiate a new 
-        // form object
-        if( typeof $form.data('amarkal-ui-form') === 'undefined' ) {
-            $form.data('amarkal-ui-form', new Amarkal.UI.form($form));
-        }
+        selection = this.each(function(){
+            var form = $(this).data('amarkal-ui-form');
 
-        var form = $form.data('amarkal-ui-form');
-        if( typeof method !== 'undefined' && typeof form[method] !== 'undefined') {
-            data = form[method].apply(form, args);
-        }
+            // If this is the initial call for this form, instantiate a new 
+            // form object
+            if( typeof form === 'undefined' ) {
+                form = new Amarkal.UI.form($(this));
+                $(this).data('amarkal-ui-form', form);
+            }
+
+            if( typeof method !== 'undefined' && typeof form[method] !== 'undefined') {
+                methodReturnVal = form[method].apply(form, args);
+
+                // If a method returns a value, only call it for the first 
+                // element in the set
+                if(typeof methodReturnVal !== 'undefined') {
+                    return false;
+                }
+            }
+        });
         
-        return data;
+        return typeof methodReturnVal !== 'undefined' ? methodReturnVal : selection;
     }
 });

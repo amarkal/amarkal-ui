@@ -300,7 +300,7 @@ Instantiate an amarkal UI component and/or call a component's method.
   ```
 * `getName()`
 
-  Get the name of this component. Similar to calling `getProps().name`.
+  Get the name of this component. Similar to calling `getProps().name`, with the only difference that this method will return `false` if the component does not have a name.
   ```js
   var name = $('#my-component').amarkalUIComponent('getName');
   ```
