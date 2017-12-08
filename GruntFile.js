@@ -18,12 +18,15 @@ module.exports = function(grunt) {
             },
             js: {
                 files: ['<%= dirs.js %>/src/*.js','components/**/*.js'],
-                tasks: ['uglify']
+                tasks: ['uglify', 'jshint']
             },
             scss: {
                 files: ['<%= dirs.scss %>/*.scss','components/**/*.scss'],
                 tasks: ['copy:scss','compass','concat:css']
             }
+        },
+        jshint: {
+            all: ['<%= dirs.js %>/src/*.js','components/**/*.js']
         },
         compass: {
             dist: {
