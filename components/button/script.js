@@ -1,5 +1,6 @@
 Amarkal.UI.registerComponent('button',{
-    onInit: function() {
+    constructor: function($el, props) {
+        Amarkal.UI.abstractComponent.constructor.call(this, $el, props);
         this._setState('start');
         if(!this.props.disabled) {
             this.$el.on('click', this._onClick);
@@ -22,11 +23,12 @@ Amarkal.UI.registerComponent('button',{
     },
     _getRequestData: function() {
         var data = Object.assign({}, this.props.request_data),
-            values = this.$el.closest('form').amarkalUIForm('getData');
-        for(key in data) {
-            data[key] = data[key].replace(/(\{\{([\w\d-]*)\}\})/g, function (match, p1, p2) {
+            values = this.$el.closest('form').amarkalUIForm('getData'),
+            callback = function (match, p1, p2) {
                 return values[p2.trim()];
-            });
+            };
+        for(var key in data) {
+            data[key] = data[key].replace(/(\{\{([\w\d-]*)\}\})/g, callback);
         }
         return data;
     },

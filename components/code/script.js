@@ -1,36 +1,37 @@
 Amarkal.UI.registerComponent('code',{
     editor: null,
-    setValue: function(value) {
-        this.editor.setValue(value);
-        this.editor.navigateLineEnd();
-        this.$el.children('textarea').val(value);
-    },
-    getValue: function() {
-        return this.editor.getValue();
-    },
-    onInit: function() {
+    constructor: function($el, props) {
         var _this = this,
-            el    = this.$el.find('.amarkal-ui-component-ace-editor');
- 
+            el    = $el.find('.amarkal-ui-component-ace-editor');
+
         ace.config.set('basePath', 'https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.8/');
 
         this.editor = ace.edit(el[0]);
         this.editor.getSession().setUseWorker(false); // Disable syntax checking
-        this.editor.setTheme("ace/theme/"+this.props.theme);
-        this.editor.getSession().setMode("ace/mode/"+this.props.language);
+        this.editor.setTheme("ace/theme/"+props.theme);
+        this.editor.getSession().setMode("ace/mode/"+props.language);
+        this.editor.setReadOnly(props.readonly || props.disabled);
+        this.editor.$blockScrolling = Infinity;
         this.editor.setOptions({
-            maxLines: this.props.max_lines
+            maxLines: props.max_lines
         });
 
-        this.editor.setReadOnly(this.props.readonly || this.props.disabled);
-        this.setValue(this.props.value);
+        Amarkal.UI.abstractComponent.constructor.call(this, $el, props);
 
         el.on('keyup',function(){
-            // This is needed for regular form submissions (without using the Amarkal JS API)
-            _this.$el.children('textarea').val(_this.editor.getValue());
-            
-            _this.onChange();
+            _this.setValue(_this.editor.getValue());
         });
+    },
+    setValue: function(value) {
+        if(this.state.value !== value) {
+            this.validateType(value, 'string');
+            this.state.value = value;
+            // This is needed for regular form submissions (without using the Amarkal JS API)
+            this.$el.children('textarea').val(value);
+            this.editor.setValue(value);
+            this.editor.navigateLineEnd();
+            this.onChange();
+        }
     },
     refresh: function() {
         this.editor.resize();

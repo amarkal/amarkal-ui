@@ -1,27 +1,38 @@
 Amarkal.UI.registerComponent('toggle',{
-    setValue: function(value) {
-        if(this.props.multi) {
-            this.$el.find('input').val(value.join(','));
-        }
-        else {
-            this.$el.find('input').val(value);
-        }
-        this._setActiveValues(value);
-    },
-    getValue: function() {
-        var value = this.$el.find('input').val();
-        if(this.props.multi) {
-            return value.split(',');
-        }
-        return value;
-    },
-    onInit: function() {
+    constructor: function($el, props) {
+        Amarkal.UI.abstractComponent.constructor.call(this, $el, props);
         var _this = this;
         if(!this.props.disabled) {
             this.$el.find('.amarkal-ui-toggle-labels div').on('click',function(){
-                _this._onClick($(this))
+                _this._onClick($(this));
             });
         }
+    },
+    setValue: function(value) {
+        if(this.props.multi) {
+            if(!Amarkal.Core.Array.same(value, this.state.value)) {
+                this.validateType(value, 'array');
+                this.state.value = value;
+                this.$el.find('input').val(value.join(','));
+                this._setActiveValues(value);
+                this.onChange();
+            }
+        }
+        else {
+            if(value !== this.state.value) {
+                this.validateType(value, 'string');
+                this.state.value = value;
+                this.$el.find('input').val(value);
+                this._setActiveValues(value);
+                this.onChange();
+            }
+        }
+    },
+    changed: function() {
+        if(this.props.multi) {
+            return !Amarkal.Core.Array.same(this.state.value, this.props.value);
+        }
+        return this.state.value !== this.props.value;
     },
     _onClick: function($el) {
         var prevValue = this.getValue(),
@@ -38,7 +49,6 @@ Amarkal.UI.registerComponent('toggle',{
         }
 
         this.setValue(newValue);
-        this.onChange();
     },
     _getActiveValues: function() {
         var values = [];

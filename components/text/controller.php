@@ -14,7 +14,7 @@ implements ValueComponentInterface,
 {
     public $component_type = 'text';
     
-    public function default_model() 
+    public function default_model()
     {
         return array(
             'name'          => '',
@@ -24,7 +24,7 @@ implements ValueComponentInterface,
             'size'          => null,
             'required'      => false,
             'readonly'      => false,
-            'default'       => null,
+            'default'       => '',
             'filter'        => null,
             'validation'    => null,
             'show'          => null

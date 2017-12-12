@@ -3,9 +3,13 @@
  * config before instantiation.
  */
 Amarkal.UI.abstractComponent = {
-    $el:         null,
-    props:       {},
-    validity:    null,
+    constructor:      function($el, props){
+        this.$el = $el;
+        this.props = props;
+        this.state = {};
+        this.validity = this.VALID;
+        this.setValue(this.props.value);
+    },
     instance:    function(){
         return this;
     },
@@ -13,16 +17,22 @@ Amarkal.UI.abstractComponent = {
         this.makeValid();
     },
     getValue:    function(){
-        return null;
+        return this.state.value;
     },
     setValue:    function(){
         return;
+    },
+    hasValue:    function(){
+        return this.state && typeof this.state.value !== 'undefined';
     },
     getProps:    function(){
         return this.props;
     },
     setProps:    function(newProps){
         this.props = Object.assign({}, this.props, newProps);
+    },
+    changed:     function(){
+        return this.props.value !== this.state.value;
     },
     refresh:     function(){},
     setValidity: function(validity){
@@ -47,7 +57,6 @@ Amarkal.UI.abstractComponent = {
     makeValid: function(){
         this.setValidity(this.VALID);
     },
-    onInit:      function(){},
     onChange:    function(){
         this.$el.trigger('amarkal.change',[this]);
     },
@@ -59,6 +68,13 @@ Amarkal.UI.abstractComponent = {
     hide:        function(){
         this.$el.hide();
         this.$el.trigger('amarkal.hide',[this]);
+    },
+    validateType:function(value, type) {
+        if(!Amarkal.Core.Utility.validateType(value, type))
+            console.warn(
+                'Amarkal.UI.abstractComponent(...).validateType(...): '+
+                'Expected a value of type "'+type+'" but instead got a "'+(typeof value)+'" (occurred in component "'+this.props.name+'")'
+            );
     },
 
     // Constants

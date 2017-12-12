@@ -20,7 +20,7 @@ When using `Amarkal\UI\Form` to process component data, the following arguments 
 
 Name | Type | Default | Required | Description
 ---|---|---|:---:|---
-`default`|*array*|`null`|No|Specifies the default value for this component.
+`default`|*array*|`''`|No|Specifies the default value for this component.
 `filter`|*function*|`null`|No|Specifies a filter function to filter the data before it is stored in the database.
 `validation`|*function*|`null`|No|Specifies a validation function to validate the data before it is stored in the database. If the data is invalid, the previous value will be used (or the default value if there was no previous data), and an error message will be given.
 `show`|*string*|`null`|No|Specifies visibility condition for this component. See [visibility conditions](../../../../#visibility-conditions)

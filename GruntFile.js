@@ -26,6 +26,9 @@ module.exports = function(grunt) {
             }
         },
         jshint: {
+            options: {
+                jshintrc: true
+            },
             all: ['<%= dirs.js %>/src/*.js','components/**/*.js']
         },
         compass: {

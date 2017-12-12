@@ -316,6 +316,19 @@ Instantiate an amarkal UI component and/or call a component's method.
   ```js
   $('#my-component').amarkalUIComponent('reset');
   ```
+* `changed()`
+
+  Check if the component has changed its value by comparing its initial value with its current value.
+  ```js
+  var changed = $('#my-component').amarkalUIComponent('changed');
+  ```
+* `instance()`
+
+  Returns the instance object for this component.
+  ```js
+  var instance = $('#my-component').amarkalUIComponent('instance');
+  instance.setValue('foo');
+  ```
 
 #### Events
 * `amarkal.change`
@@ -376,9 +389,15 @@ Instantiate an amarkal UI component and/or call a component's method.
   ```js
   var visible = $('#my-form').amarkalUIForm('isVisible', 'component_name');
   ```
-  * `refresh()`
+* `refresh()`
 
   Refresh all the components in this form.
   ```js
   $('#my-form').amarkalUIForm('refresh');
+  ```
+* `changed()`
+
+  Check if any of the values in the form has changed by comparing its current value with its initial value.
+  ```js
+  var changed = $('#my-form').amarkalUIForm('changed');
   ```

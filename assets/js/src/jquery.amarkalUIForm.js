@@ -7,7 +7,7 @@ $.fn.extend({
             methodReturnVal,
             selection,
             $form = $(this[0]),
-            form = $form.data('amarkal-ui-form')
+            form = $form.data('amarkal-ui-form');
         
         selection = this.each(function(){
             var form = $(this).data('amarkal-ui-form');
@@ -15,7 +15,7 @@ $.fn.extend({
             // If this is the initial call for this form, instantiate a new 
             // form object
             if( typeof form === 'undefined' ) {
-                form = new Amarkal.UI.form($(this));
+                form = new Form($(this));
                 $(this).data('amarkal-ui-form', form);
             }
 

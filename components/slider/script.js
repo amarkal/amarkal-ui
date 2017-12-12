@@ -1,13 +1,6 @@
 Amarkal.UI.registerComponent('slider',{
-    setValue: function(value) {
-        this.$el.find('input').val(value);
-        this._updateLabelPosition();
-        this._updateLabelValue(value);
-    },
-    getValue: function() {
-        return this.$el.find('input').val();
-    },
-    onInit: function() {
+    constructor: function($el, props) {
+        Amarkal.UI.abstractComponent.constructor.call(this, $el, props);
         var _this  = this,
             $range = this.$el.find('input'),
             $label = this.$el.find('.slider-value-label');
@@ -20,10 +13,20 @@ Amarkal.UI.registerComponent('slider',{
         $range.on('input change',function(){
             _this._updateLabelValue($range.val());
             _this._updateLabelPosition();
-            _this.onChange();
+            _this.setValue(Number($range.val()));
         });
 
         $(window).on('resize', this.refresh);
+    },
+    setValue: function(value) {
+        if(value !== this.state.value) {
+            this.validateType(value, 'number');
+            this.state.value = value;
+            this.$el.find('input').val(value);
+            this._updateLabelPosition();
+            this._updateLabelValue(value);
+            this.onChange();
+        }
     },
     refresh: function() {
         this._updateLabelPosition();

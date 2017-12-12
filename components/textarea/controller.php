@@ -23,7 +23,7 @@ implements ValueComponentInterface,
             'required'      => false,
             'readonly'      => false,
             'rows'          => 5,
-            'default'       => null,
+            'default'       => '',
             'filter'        => null,
             'validation'    => null,
             'show'          => null

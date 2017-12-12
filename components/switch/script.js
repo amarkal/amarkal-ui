@@ -1,21 +1,18 @@
 Amarkal.UI.registerComponent('switch',{
-    setValue: function(value) {
-        this.$el.find('input[type="hidden"]').val(value);
-        if('on' === value) {
-            this.$el.find('input[type="checkbox"]').attr('checked',true);
-        }
-        else {
-            this.$el.find('input[type="checkbox"]').attr('checked',false);
-        }
-    },
-    getValue: function() {
-        return this.$el.find('input[type="hidden"]').val();
-    },
-    onInit: function() {
+    constructor: function($el, props) {
+        Amarkal.UI.abstractComponent.constructor.call(this, $el, props);
         var _this = this;
         this.$el.find('input[type="checkbox"]').on('change',function(e){
-            _this.$el.find('input[type="hidden"]').val(e.target.checked ? 'on' : 'off');
-            _this.onChange();
+            _this.setValue(e.target.checked ? 'on' : 'off');
         });
+    },
+    setValue: function(value) {
+        if(value !== this.state.value) {
+            this.validateType(value, 'string');
+            this.state.value = value;
+            this.$el.find('input[type="hidden"]').val(value);
+            this.$el.find('input[type="checkbox"]').attr('checked','on' === value);
+            this.onChange();
+        }
     }
 });
