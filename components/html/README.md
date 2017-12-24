@@ -7,6 +7,7 @@ The `html` field allows you to display static HTML.
 Name | Type | Default | Required | Description
 ---|---|---|:---:|---
 `html`|*string*|`''`|Yes|Specifies HTML to display.
+`template`|*string*|`''`|Yes|Specifies a path to a template `.phtml` file
 
 ### Additional `UI\Form` Arguments
 
