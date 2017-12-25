@@ -20,7 +20,7 @@ implements ValueComponentInterface,
             'id'            => '',
             'disabled'      => false,
             'readonly'      => false,
-            'default'       => null,
+            'default'       => 'off',
             'filter'        => array( $this, 'filter' ),
             'show'          => null
         );

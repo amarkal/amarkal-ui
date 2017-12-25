@@ -17,7 +17,7 @@ When using `Amarkal\UI\Form` to process component data, the following arguments 
 
 Name | Type | Default | Required | Description
 ---|---|---|:---:|---
-`default`|*array*|`null`|No|Specifies the default value for this component.
+`default`|*array*|`'off'`|No|Specifies the default value for this component.
 `show`|*string*|`null`|No|Specifies visibility condition for this component. See [visibility conditions](../../../../#visibility-conditions)
 
 ## Value

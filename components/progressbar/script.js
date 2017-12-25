@@ -21,6 +21,9 @@ Amarkal.UI.registerComponent('progressbar',{
         this._updateLabel();
         this._populateValueLabels();
     },
+    changed: function() {
+        return false;
+    },
     /**
      * Add properties to the basic props object
      */
