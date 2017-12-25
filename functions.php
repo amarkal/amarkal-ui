@@ -7,7 +7,7 @@
  *
  * @package   amarkal-ui
  * @author    Askupa Software <hello@askupasoftware.com>
- * @link      https://github.com/askupasoftware/amarkal-ui
+ * @link      https://github.com/amarkal/amarkal-ui
  * @copyright 2017 Askupa Software
  */
 

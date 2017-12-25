@@ -1,8 +1,8 @@
-# amarkal-ui [![Build Status](https://scrutinizer-ci.com/g/askupasoftware/amarkal-ui/badges/build.png?b=master)](https://scrutinizer-ci.com/g/askupasoftware/amarkal-ui/build-status/master) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/askupasoftware/amarkal-ui/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/askupasoftware/amarkal-ui/?branch=master) [![Built with Grunt](https://cdn.gruntjs.com/builtwith.svg)](https://gruntjs.com/) [![Amarkal Powered](https://askupasoftware.com/amarkal-powered.svg)](https://products.askupasoftware.com/amarkal) [![License](https://img.shields.io/badge/license-GPL--3.0%2B-red.svg)](https://raw.githubusercontent.com/askupasoftware/amarkal-ui/master/LICENSE)
+# amarkal-ui [![Build Status](https://scrutinizer-ci.com/g/amarkal/amarkal-ui/badges/build.png?b=master)](https://scrutinizer-ci.com/g/amarkal/amarkal-ui/build-status/master) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/amarkal/amarkal-ui/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/amarkal/amarkal-ui/?branch=master) [![Built with Grunt](https://cdn.gruntjs.com/builtwith.svg)](https://gruntjs.com/) [![Amarkal Powered](https://askupasoftware.com/amarkal-powered.svg)](https://products.askupasoftware.com/amarkal) [![License](https://img.shields.io/badge/license-GPL--3.0%2B-red.svg)](https://raw.githubusercontent.com/amarkal/amarkal-ui/master/LICENSE)
 A set of UI components for WordPress.
 
 **Tested up to:** WordPress 4.7  
-**Dependencies:** *[amarkal-core](https://github.com/askupasoftware/amarkal-core)*
+**Dependencies:** *[amarkal-core](https://github.com/amarkal/amarkal-core)*
 
 ## overview
 
@@ -10,20 +10,20 @@ A set of UI components for WordPress.
 
 ### Available Components
 
-* [Text](https://github.com/askupasoftware/amarkal-ui/tree/master/components/text)
-* [Textarea](https://github.com/askupasoftware/amarkal-ui/tree/master/components/textarea)
-* [Number](https://github.com/askupasoftware/amarkal-ui/tree/master/components/number)
-* [Select](https://github.com/askupasoftware/amarkal-ui/tree/master/components/select)
-* [Radio](https://github.com/askupasoftware/amarkal-ui/tree/master/components/radio)
-* [Checkbox](https://github.com/askupasoftware/amarkal-ui/tree/master/components/checkbox)
-* [Composite](https://github.com/askupasoftware/amarkal-ui/tree/master/components/composite)
-* [Switch](https://github.com/askupasoftware/amarkal-ui/tree/master/components/switch)
-* [Slider](https://github.com/askupasoftware/amarkal-ui/tree/master/components/slider)
-* [Button](https://github.com/askupasoftware/amarkal-ui/tree/master/components/button)
-* [Toggle](https://github.com/askupasoftware/amarkal-ui/tree/master/components/toggle)
-* [Code](https://github.com/askupasoftware/amarkal-ui/tree/master/components/code)
-* [Progress Bar](https://github.com/askupasoftware/amarkal-ui/tree/master/components/progressbar)
-* [HTML](https://github.com/askupasoftware/amarkal-ui/tree/master/components/html)
+* [Text](https://github.com/amarkal/amarkal-ui/tree/master/components/text)
+* [Textarea](https://github.com/amarkal/amarkal-ui/tree/master/components/textarea)
+* [Number](https://github.com/amarkal/amarkal-ui/tree/master/components/number)
+* [Select](https://github.com/amarkal/amarkal-ui/tree/master/components/select)
+* [Radio](https://github.com/amarkal/amarkal-ui/tree/master/components/radio)
+* [Checkbox](https://github.com/amarkal/amarkal-ui/tree/master/components/checkbox)
+* [Composite](https://github.com/amarkal/amarkal-ui/tree/master/components/composite)
+* [Switch](https://github.com/amarkal/amarkal-ui/tree/master/components/switch)
+* [Slider](https://github.com/amarkal/amarkal-ui/tree/master/components/slider)
+* [Button](https://github.com/amarkal/amarkal-ui/tree/master/components/button)
+* [Toggle](https://github.com/amarkal/amarkal-ui/tree/master/components/toggle)
+* [Code](https://github.com/amarkal/amarkal-ui/tree/master/components/code)
+* [Progress Bar](https://github.com/amarkal/amarkal-ui/tree/master/components/progressbar)
+* [HTML](https://github.com/amarkal/amarkal-ui/tree/master/components/html)
 * Color Picker (coming soon)
 * Attachment (coming soon)
 * Editor (coming soon)
@@ -58,7 +58,7 @@ require_once 'path/to/vendor/autoload.php';
 
 ### Manually
 
-[Download the package](https://github.com/askupasoftware/amarkal-ui/archive/master.zip) from github and include `bootstrap.php` in your project.
+[Download the package](https://github.com/amarkal/amarkal-ui/archive/master.zip) from github and include `bootstrap.php` in your project.
 
 ```php
 require_once 'path/to/amarkal-ui/bootstrap.php';
