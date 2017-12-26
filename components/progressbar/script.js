@@ -1,10 +1,11 @@
 Amarkal.UI.registerComponent('progressbar',{
     constructor: function($el, props) {
-        var _this  = this,
-            $label = $el.find('.amarkal-ui-value-label');
+        Amarkal.UI.abstractComponent.constructor.call(this, $el, $.extend({},props,{
+            delta: Math.abs(props.max-props.min),
+            labelWidth: 30, // The width of each label in the horizontal axis, in pixels (must match the CSS)
+            minSpacing: 50 // Minimum spacing between labels
+        }));
 
-        this.$el = $el;
-        this._setProps(props);
         this._updateLabel();
         this._populateValueLabels();
 
@@ -23,16 +24,6 @@ Amarkal.UI.registerComponent('progressbar',{
     },
     changed: function() {
         return false;
-    },
-    /**
-     * Add properties to the basic props object
-     */
-    _setProps: function(props) {
-        this.props = $.extend({},props,{
-            delta: Math.abs(props.max-props.min),
-            labelWidth: 30, // The width of each label in the horizontal axis, in pixels (must match the CSS)
-            minSpacing: 50 // Minimum spacing between labels
-        });
     },
 
     /**

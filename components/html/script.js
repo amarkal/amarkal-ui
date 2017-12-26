@@ -1,1 +1,5 @@
-Amarkal.UI.registerComponent('html',{});
+Amarkal.UI.registerComponent('html',{
+    changed: function() {
+        return false;
+    }
+});

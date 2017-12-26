@@ -6,6 +6,9 @@ Amarkal.UI.registerComponent('button',{
             this.$el.on('click', this._onClick);
         }
     },
+    changed: function() {
+        return false;
+    },
     _doing: false,
     _onClick: function(e) {
         e.preventDefault();
